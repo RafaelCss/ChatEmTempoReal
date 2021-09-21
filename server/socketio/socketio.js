@@ -1,5 +1,5 @@
 import express from 'express';
-const app = express();
+const app = express()
 import { createServer } from 'http';
 const server = createServer(app);
 import { Server } from "socket.io";
@@ -8,11 +8,13 @@ import path from 'path';
 const __dirname = path.resolve();
 
 
+app.use(express.static('view'))
+
+app.use('/', express.static(__dirname + '/view'));
+app.use('/', express.static(__dirname + '/src'));
 
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/view/index.html')
-});
+
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
@@ -43,7 +45,8 @@ io.on('connection', (socket) => {
 });
 
 
+server.listen(3000, ()=>{
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
-});
+  console.log('Estamos on!!!!')
+})
+

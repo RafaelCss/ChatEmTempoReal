@@ -11,7 +11,6 @@ class InputsKey {
   }
 
 
-
 loadElements(){ // Pegando todos os elementos pelo id da chat...
    this.dataClass = {};
 
@@ -45,23 +44,15 @@ elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
 
 addContact(){
 
-    this.dataClass.addcontact.on('click', e =>{
-
-      this.dataClass.contacts.hide()
-      this.dataClass.contacts2.show()
-
+    this.dataClass.addcontact.on('click', e =>{ // Click Div addcontatos..
+      this.dataClass.contacts.toggle()
+      this.dataClass.contacts2.toggle()
     })
-
 
 }
 
 
-
-
-
-
-
-/* socketIo(){
+ socketIo(){
 
   const socket = io()
 
@@ -84,7 +75,7 @@ addContact(){
 
 
   }  
- */
+ 
 
 
 

@@ -4,8 +4,8 @@ class InputsKey {
   constructor(){
 
     this.elementsProtoType();
-    this.socketIo()
     this.loadElements();
+    //this.socketIo()
 
   }
 
@@ -19,8 +19,7 @@ loadElements(){ // Pegando todos os elementos pelo id da chat...
       this.dataClass[Format.getCamelCase(element.id)] = element ;
 
           })
-
-    
+ 
   }
 
 elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
@@ -42,7 +41,7 @@ elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
 
   }
 
-socketIo(){
+/* socketIo(){
 
   const socket = io()
 
@@ -65,7 +64,7 @@ socketIo(){
 
 
   }  
-
+ */
 
 
 

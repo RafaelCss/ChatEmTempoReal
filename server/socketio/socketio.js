@@ -8,10 +8,11 @@ import path from 'path';
 const __dirname = path.resolve();
 
 
+
 app.use(express.static('view'))
 
 app.use('/', express.static(__dirname + '/view'));
-app.use('/', express.static(__dirname + '/src'));
+
 
 
 

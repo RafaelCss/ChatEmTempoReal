@@ -26,9 +26,8 @@ const User = bd.define('User', {
 
   }, 
   
-  
   {
-    // Other model options go here
+  
   });
   
   User.sync()

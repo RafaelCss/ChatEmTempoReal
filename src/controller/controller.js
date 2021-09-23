@@ -6,6 +6,7 @@ class InputsKey {
     this.elementsProtoType();
     this.loadElements();
     //this.socketIo()
+    this.addContact()
 
   }
 
@@ -40,6 +41,25 @@ elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
     
 
   }
+
+
+addContact(){
+
+    this.dataClass.addcontact.on('click', e =>{
+
+      this.dataClass.contacts.hide()
+      this.dataClass.contacts2.show()
+
+    })
+
+
+}
+
+
+
+
+
+
 
 /* socketIo(){
 

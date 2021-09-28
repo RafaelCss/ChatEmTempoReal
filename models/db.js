@@ -2,7 +2,7 @@ import  {Sequelize}  from "sequelize";
 
 // Conexão com Banco de Dados 
 
-const sequelize = new Sequelize('cad_user_chat','root', "42951822",{
+const sequelize = new Sequelize('********','root', "*******",{
     host: 'localhost',
     dialect: 'mysql'
 })

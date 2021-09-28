@@ -1,3 +1,4 @@
+import Orchestrator from '../../public/src/controller/orchestrator.js';
 import express from 'express';
 const app = express()
 import { createServer } from 'http';
@@ -18,6 +19,7 @@ app.get('/', function(req, res) {
 
 io.on('connection', (socket) => {
   console.log(`user conectado : ${socket.id}`);
+  Orchestrator.receiveData(socket.id)
 });
 
 
@@ -48,4 +50,3 @@ server.listen(3000, ()=>{
   console.log('Estamos on!!!!')
 })
 
-export default io;

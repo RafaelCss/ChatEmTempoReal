@@ -69,7 +69,7 @@ elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
   }
 
 
-initEvents(){
+initEvents(){  //eventos de div configuração e add contatos
 
       this.dataClass.addcontact.on('click', e =>{ // Click Div addcontatos..
         this.dataClass.contacts.toggle()
@@ -86,26 +86,14 @@ initEvents(){
 
       })
 
-    /*   this.dataClass.textMessage('keypress' , e =>{ // enviar mensagem com enter
-
-          if(e.key === 'Enter'){
-
-              e.preventDefault()
-
-              this.dataClass.submit.click()
-          }
-
-
-
-      }) */
-
+      
 
  }
 
-inputEventMsg(){
+inputEventMsg(){  // evento de enviar mensagem
 
 
-   const input = this.dataClass.textMessage
+   let input = this.dataClass.textMessage
    const messages = this.dataClass.messages
  
    const listmensage = [{}]
@@ -118,18 +106,33 @@ inputEventMsg(){
      listmensage.push(input.value)  
      console.log(listmensage)
    });
+
+
+
+   this.dataClass.textMessage.on('keypress' , e =>{ // enviar mensagem com enter
+
+    if(e.key === 'Enter'){
+
+        this.dataClass.submit.click()
+    }
+
+
+
+}) 
+
+
  
 
   } 
 
-
+  
 
 
 
   }
 
 
-
+/* export default inputEventMsg(); */
 
 
 

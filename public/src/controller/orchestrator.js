@@ -2,9 +2,11 @@ class Orchestrator {
 
 
 
-    static receiveData (){
+    static receiveData (socket){
 
-        
+        const idUser = socket;
+
+        console.log('User conectado :', idUser)
 
     }
 
@@ -15,3 +17,6 @@ class Orchestrator {
 
 
 }
+
+
+export default Orchestrator

@@ -16,8 +16,9 @@
   <div id="frame">
     <div id="sidepanel">
       <div id="profile">
-        <div class="wrap">
-          <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
+        <div class="wrap" id="my-photo">
+          <input type="file" name="photo" id="photo" style ='display : none'>
+          <img id="profile-img" src=" "class="online" alt="" />
           <p>Mike Ross</p>
           <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
           <div id="status-options">
@@ -74,14 +75,17 @@
               </div>
             </div>
           </li>
-         
       </div>
-      <div id="contacts2" style="display: none; background-color: brown;">
+
+      <div id="panelAddcontact" style=" background-color: brown;">
         Meus contatos 
          
       </div>
 
-
+      <div id="panelSttings" style=" background-color: brown;">
+       Configurações
+         
+      </div>
       <div id="bottom-bar">
         <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
         <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
@@ -89,7 +93,7 @@
     </div>
     <div class="content" id="content">
       <div class="contact-profile" id="contact-profile">
-        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+        <img src="" alt="" />
         <p>Harvey Specter</p>
         <div class="social-media" id="social-media">
           <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -109,40 +113,20 @@
       </div>
     </div>
   </div>
+  
+  <script src="../util/format.js" ></script>
+  <script src="../controller/controller.js"></script>
+  <script src="../app.js"  ></script>
+<!--  <script src="/socket.io/socket.io.js"></script> -
 
-  <script src="node_modules/socket.io/client-dist/socket.io.js"></script>
-  <script src="/socket.io/socket.io.js"></script>> 
-  <script src="/src/util/format.js"></script>
-  <script src="/src/controller/controller.js"></script>
-  <script src="/src/app.js"></script>
 
- <!-- <script>
 
-    const socket = io()
+  
 
-    const form = document.getElementById('submit')
-
-    const input = document.getElementById('text-message')
-
-    const messages = document.getElementById('messages')
-
-    
-  form.addEventListener('click', (e)=> {
-    e.preventDefault();
-    if (input.value) {
-      socket.emit('chat message', input.value);
-      input.value = '';
-    }
-  });
-
-  socket.on('chat message', function(msg) {
-    var item = document.createElement('li');
-    item.textContent = msg;
-    messages.appendChild(item);
-   window.scrollTo(0, document.body.scrollHeight);
-  });
-
-  </script>  -->
+<script>
+ var socket = io("http://localhost:3000/"); 
+</script>
+ -->
 
 </body>
 </html>

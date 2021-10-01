@@ -682,3 +682,28 @@ height: 50px;
 
 
 }
+
+li{
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  display: list-item;
+  text-align: right;
+  list-style: none;
+
+
+}
+
+#message{
+background-color: bisque;
+width: fit-content;
+padding-bottom: 5px;
+padding-left: 1px;
+vertical-align: baseline;
+margin-left: 500px;
+margin-right: 1px;
+}

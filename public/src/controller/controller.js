@@ -1,9 +1,7 @@
-import Format from "../util/format.js";
-import io from '/socket.io/socket.io.js'
-class InputsKey extends Orchestrator  {
+
+class InputsKey {
   
   constructor(){
-    this.io = io()
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
@@ -98,17 +96,18 @@ inputEventMsg(value){  // evento de enviar mensagem
 
    const input = this.dataClass.textMessage
    const messages = this.dataClass.messages
-   const io = this.io() 
    const listmensage = [{}]
 
   this.dataClass.submit.on('click', function(e) {
      e.preventDefault();
      
-     var item = document.createElement('li');
-     item.textContent = input.value;
-     messages.appendChild(item);
+     var li = document.createElement('li')
+     var div = document.createElement("div")
+     div.id='message'
+     li.textContent = input.value;
+     messages.appendChild(div);
+     div.appendChild(li)
      listmensage.push(input.value)
-     socket.emit('chat message', input.value)
      
    });
 
@@ -126,7 +125,7 @@ inputEventMsg(value){  // evento de enviar mensagem
   }
 
 
-export default InputsKey;
+
 
 
 

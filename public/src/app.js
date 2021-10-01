@@ -1,3 +1,2 @@
 
 window.inputKey = new InputsKey()
-

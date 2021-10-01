@@ -1,3 +1,4 @@
+
 class Format {
                                    
     static getCamelCase(text){ // Converte em Camel Case
@@ -13,4 +14,3 @@ class Format {
 
 }
 
-export default Format;

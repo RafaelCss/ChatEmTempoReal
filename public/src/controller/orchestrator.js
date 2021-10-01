@@ -1,7 +1,5 @@
 class Orchestrator {
 
-
-
     static receiveData (socket){
 
         const idUser = socket;
@@ -10,7 +8,13 @@ class Orchestrator {
 
     }
 
+    static receiveMsg (msg){
 
+        const dataMsg = msg;
+
+        console.log('User conectado :', dataMsg)
+        
+    }
 
 
 

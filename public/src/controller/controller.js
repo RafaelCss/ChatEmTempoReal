@@ -1,12 +1,15 @@
-
-class InputsKey {
+import Format from "../util/format.js";
+import io from '/socket.io/socket.io.js'
+class InputsKey extends Orchestrator  {
   
   constructor(){
-
+    this.io = io()
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
     this.inputEventMsg()
+
+
 
   }
 
@@ -90,39 +93,30 @@ initEvents(){  //eventos de div configuração e add contatos
 
  }
 
-inputEventMsg(){  // evento de enviar mensagem
+inputEventMsg(value){  // evento de enviar mensagem
 
 
-   let input = this.dataClass.textMessage
+   const input = this.dataClass.textMessage
    const messages = this.dataClass.messages
- 
+   const io = this.io() 
    const listmensage = [{}]
 
   this.dataClass.submit.on('click', function(e) {
      e.preventDefault();
+     
      var item = document.createElement('li');
      item.textContent = input.value;
      messages.appendChild(item);
-     listmensage.push(input.value)  
-     console.log(listmensage)
+     listmensage.push(input.value)
+     socket.emit('chat message', input.value)
+     
    });
 
-
-
    this.dataClass.textMessage.on('keypress' , e =>{ // enviar mensagem com enter
-
-    if(e.key === 'Enter'){
-
+          if(e.key === 'Enter'){
         this.dataClass.submit.click()
-    }
-
-
-
-}) 
-
-
- 
-
+            }
+      }) 
   } 
 
   
@@ -132,7 +126,7 @@ inputEventMsg(){  // evento de enviar mensagem
   }
 
 
-/* export default inputEventMsg(); */
+export default InputsKey;
 
 
 

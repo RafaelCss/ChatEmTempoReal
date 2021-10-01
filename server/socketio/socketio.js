@@ -10,6 +10,7 @@ const __dirname = path.resolve();
 
 
 app.use(express.static('public/src/view/'));
+app.use(express.static('public'))
 
 
 app.get('/', function(req, res) {
@@ -18,7 +19,6 @@ app.get('/', function(req, res) {
 
 
 io.on('connection', (socket) => {
-  console.log(`user conectado : ${socket.id}`);
   Orchestrator.receiveData(socket.id)
 });
 
@@ -39,7 +39,9 @@ io.on('connection', (socket) => {
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     console.log('message: ' + msg);
+    Orchestrator.receiveMsg(msg)
   });
+
 });
 
 
@@ -50,3 +52,5 @@ server.listen(3000, ()=>{
   console.log('Estamos on!!!!')
 })
 
+
+export default io;

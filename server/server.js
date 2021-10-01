@@ -1,6 +1,6 @@
 import express from "express";
-import User from "../models/Users.js";
-const user = User
+import Users from './models/Users.js'
+const user = Users
 
 
 const app = express();
@@ -14,8 +14,17 @@ app.get('/' , (req,res) =>{
 
 app.post('/cadastro' , async (req,res) =>{
     console.log(req.body)
-    await user.create(req.body)
-    res.send('Hello Word')
+
+    try {
+        
+        await user.create(req.body)
+        res.sendStatus(200)
+    } catch (error) {
+     
+        console.log(`Error : ${error}`)
+        res.sendStatus(400)
+    }
+    
 })
 
 

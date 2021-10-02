@@ -1,7 +1,7 @@
-
 class InputsKey {
-  
+
   constructor(){
+
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
@@ -107,6 +107,10 @@ inputEventMsg(value){  // evento de enviar mensagem
      li.textContent = input.value;
      messages.appendChild(div);
      div.appendChild(li)
+     if (input.value) {
+      this.socket.emit('chat message', input.value);
+      input.value = '';
+    }
      listmensage.push(input.value)
      
    });

@@ -1,4 +1,5 @@
-class Orchestrator {
+
+class Orchestrator  {
 
     static receiveData (socket){
 
@@ -23,4 +24,4 @@ class Orchestrator {
 }
 
 
-export default Orchestrator
+export default Orchestrator;

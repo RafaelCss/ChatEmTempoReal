@@ -8,7 +8,7 @@ const io =  new Server(server);
 import path from 'path';
 const __dirname = path.resolve();
 
-app.use(express.static('public/src'));
+app.use(express.static('.'));
 app.use(express.static('public/src/view/'));
 app.use(express.static('public/src/controller/'));
 app.use(express.static('public/src/util/'));

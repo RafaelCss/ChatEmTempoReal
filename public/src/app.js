@@ -1,1 +1,3 @@
-window.inputKey = new InputsKey()
+import { io } from "../../server/socketio/serverchat.js";
+
+window.inputKey = new InputsKey(io)

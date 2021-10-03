@@ -104,7 +104,9 @@
       <div class="messages" id="messages">
        <div id="message">
          
-       </div> <div class="messages" id="messages">
+       </div>
+       
+       <div class="messages" id="messages">
         <div id="message2">
           
         </div>
@@ -113,6 +115,7 @@
         <div class="wrap"  id="wrap-input-button">
         <input type="text" placeholder="Write your message..."  id="text-message"/>
         <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+        <i class="bi bi-mic attachment" aria-hidden="true"></i>
         <button class="submit" id="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </div>
       </div>
@@ -122,7 +125,29 @@
   <script src="/public/src/util/format.js"></script>
   <script src="/public/src/controller/controller.js"></script>
   <script src="/public/src/app.js"></script>
- 
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    
+  const socket = io();
 
+const messages = document.getElementById('messages');
+const form = document.getElementById('submit');
+const input = document.getElementById('text-message');
+
+form.addEventListener('click', function(e) {
+  e.preventDefault();
+  if (input.value) {
+    socket.emit('chat message', input.value);
+    input.value = '';
+  }
+});
+
+socket.on('chat message', function(msg) {
+  var item = document.createElement('li');
+  item.textContent = msg;
+  messages.appendChild(item);
+  window.scrollTo(0, document.body.scrollHeight);
+});
+  </script>
 </body>
 </html>

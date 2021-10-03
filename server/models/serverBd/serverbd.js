@@ -1,16 +1,11 @@
 import express from "express";
-import Users from './models/Users.js'
+import Users from '../Users.js'
 const user = Users
-
-
 const app = express();
 const port = 3001;
-
 app.use(express.json())
 
-app.get('/' , (req,res) =>{
-    res.send('Hello Word')
-})
+
 
 app.post('/cadastro' , async (req,res) =>{
     console.log(req.body)

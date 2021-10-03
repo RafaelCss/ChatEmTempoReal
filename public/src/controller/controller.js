@@ -1,14 +1,12 @@
+
 class InputsKey {
 
-  constructor(){
-
+  constructor(socket){
+    this.socket = socket;
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
     this.inputEventMsg()
-
-
-
   }
 
 loadElements(){ // Pegando todos os elementos pelo id da chat...
@@ -91,27 +89,26 @@ initEvents(){  //eventos de div configuração e add contatos
 
  }
 
-inputEventMsg(value){  // evento de enviar mensagem
+  inputEventMsg(){  // evento de enviar mensagem
+  
+  const input = this.dataClass.textMessage
+  const messages = this.dataClass.messages
 
-
-   const input = this.dataClass.textMessage
-   const messages = this.dataClass.messages
-   const listmensage = [{}]
-
-  this.dataClass.submit.on('click', function(e) {
+   this.dataClass.submit.on('click',  function(e) {
      e.preventDefault();
-     
+
      var li = document.createElement('li')
      var div = document.createElement("div")
      div.id='message'
-     li.textContent = input.value;
-     messages.appendChild(div);
-     div.appendChild(li)
-     if (input.value) {
-      this.socket.emit('chat message', input.value);
-      input.value = '';
+     
+     if(input.value && !input.value == ''){
+       li.textContent = input.value;
     }
-     listmensage.push(input.value)
+    
+      messages.appendChild(div);
+      div.appendChild(li) 
+     input.value =''
+     window.scrollTo(0, document.body.scrollHeight)
      
    });
 
@@ -122,12 +119,10 @@ inputEventMsg(value){  // evento de enviar mensagem
       }) 
   } 
 
+
+
   
-
-
-
-  }
-
+}
 
 
 

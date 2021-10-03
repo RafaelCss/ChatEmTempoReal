@@ -1,6 +1,5 @@
 import { server } from "./serverchat.js";
-import { io } from "./serverchat.js";
-
+import './socket.js'
 
 
 

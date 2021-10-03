@@ -1,11 +1,15 @@
 import express from 'express';
-const app = express()
-import { createServer } from 'http';
-const server = createServer(app);
+import  http  from 'http';
 import { Server}  from "socket.io";
+/* import path from 'path';
+
+
+
+
+const __dirname = path.resolve(); */
+const app = express()
+const server = http.createServer(app);
 const io =  new Server(server);
-import path from 'path';
-const __dirname = path.resolve();
 
 app.use(express.static('.'));
 app.use(express.static('public/src/view/'));

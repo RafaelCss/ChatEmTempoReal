@@ -1,5 +1,6 @@
 import { io } from "./serverchat.js";
 import Orchestrator from '../../public/src/controller/orchestrator.js';
+import '../../public/src/controller/controller.js'
 
 io.on('connection', (socket) => {
     console.log('a user connected');

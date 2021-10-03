@@ -1,5 +1,6 @@
 import { server } from "./serverchat.js";
 import './socket.js'
+import '../../public/src/controller/controller.js'
 
 
 

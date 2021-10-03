@@ -1,8 +1,7 @@
-
 class InputsKey {
 
-  constructor(socket){
-    this.socket = socket;
+  constructor(){
+    this.socket= io()
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
@@ -93,6 +92,7 @@ initEvents(){  //eventos de div configuração e add contatos
   
   const input = this.dataClass.textMessage
   const messages = this.dataClass.messages
+  const socket = io()
 
    this.dataClass.submit.on('click',  function(e) {
      e.preventDefault();
@@ -102,13 +102,18 @@ initEvents(){  //eventos de div configuração e add contatos
      div.id='message'
      
      if(input.value && !input.value == ''){
-       li.textContent = input.value;
+      li.textContent = input.value;
+      socket.emit('chat message', input.value);
+      input.value = '';
     }
-    
+    socket.on('chat message', function(msg) {
+
       messages.appendChild(div);
       div.appendChild(li) 
      input.value =''
      window.scrollTo(0, document.body.scrollHeight)
+
+    })
      
    });
 

@@ -23,18 +23,17 @@ const User = bd.define('User', {
         allowNull : true,
     },
     
-    
-   /*  password: {
+    password: {
       type : Sequelize.INTEGER,
       allowNull : false,
       
-    } */
+    } 
   }, 
   
   {
   
   });
- 
+
   User.sync()
 
   export default User;

@@ -8,9 +8,9 @@ const sequelize = new Sequelize('cad_user_chat','root', '42951822' , {
 })
 
 
-sequelize.authenticate()
+await  sequelize.authenticate()
 .then(function(){
-
+  
     console.log('deu tudo certo')
 
 }).catch(function(){

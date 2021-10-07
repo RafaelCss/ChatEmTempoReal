@@ -84,8 +84,6 @@ initEvents(){  //eventos de div configuração e add contatos
 
       })
 
-      
-
  }
 
   inputEventMsg(){  // evento de enviar mensagem
@@ -106,12 +104,11 @@ initEvents(){  //eventos de div configuração e add contatos
       socket.emit('chat message', input.value);
       input.value = '';
     }
-    socket.on('chat message', function(msg) {
-
+    socket.on('chat message', (socket)=> {
+      input.value = socket;
       messages.appendChild(div);
       div.appendChild(li) 
-     input.value =''
-     window.scrollTo(0, document.body.scrollHeight)
+      window.scrollTo(0, document.body.scrollHeight)
 
     })
      

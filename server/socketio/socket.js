@@ -2,10 +2,7 @@ import { io } from "./serverchat.js";
 import Orchestrator from '../../public/src/controller/orchestrator.js';
 import '../../public/src/controller/controller.js'
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
-  });
-  
+
   io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', () => {
@@ -26,9 +23,6 @@ io.on('connection', (socket) => {
         date : new Date(),
         msg: msg,
         id: socket.id,
-        issued : socket.issued,
-        time: socket.time,
-        query : socket.query
       })
     });
   });

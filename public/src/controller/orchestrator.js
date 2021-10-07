@@ -16,12 +16,16 @@ class Orchestrator  {
         console.log('User conectado :', dataMsg)
         
         this.sendMessage(msg)
+     const enviar = async () => await  User.create({
+            name :'Rafael',
+            email : 'rf208@minhabunda.com'
+        })();
     }
 
 
     static sendMessage(msg) {
 
-
+       
 
     }
 

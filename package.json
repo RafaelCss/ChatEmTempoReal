@@ -5,7 +5,7 @@
   "main": "server.js",
  "type": "module",
   "scripts": {
-    "start": " node server/server.js",
+    "start": " node server/models/serverBd/serverbd.js",
     "dev": "nodemon server/socketio/router.js"
   },
   "keywords": [],

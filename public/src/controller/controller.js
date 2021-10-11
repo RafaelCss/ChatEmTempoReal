@@ -1,7 +1,6 @@
 class InputsKey {
 
   constructor(){
-    this.socket= io()
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
@@ -16,7 +15,6 @@ loadElements(){ // Pegando todos os elementos pelo id da chat...
       this.dataClass[Format.getCamelCase(element.id)] = element ;
 
           })
- 
   }
 
 elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
@@ -86,33 +84,36 @@ initEvents(){  //eventos de div configuração e add contatos
 
  }
 
-  inputEventMsg(){  // evento de enviar mensagem
+
+inputEventMsg(){  // evento de enviar mensagem
+    const socket = io()
   
-  const input = this.dataClass.textMessage
-  const messages = this.dataClass.messages
-  const socket = io()
+      this.dataClass.submit.on('click',  e => {
+             e.preventDefault();
 
-   this.dataClass.submit.on('click',  function(e) {
-     e.preventDefault();
+           const input = this.dataClass.textMessage
+              if(input.value){
+               socket.emit('chat message', input.value)
+                 input.value = '';
+            }
+      
+           const messages = this.dataClass.messages
+           const name = this.dataClass.seunome
+      if(name ===  'rafael'){
 
-     var li = document.createElement('li')
-     var div = document.createElement("div")
-     div.id='message'
+        document.getElementById('msgss').className ='other'
+      }
+            socket.on('chat message', (msg) => {
+                messages.innerHTML +=`
+                  <div id='msguser'> 
+                  <li id ='msgss'>${msg}</li>
+                  </div>       
+              `
+           window.scrollTo(0, document.body.scrollHeight);
+
+             });
      
-     if(input.value && !input.value == ''){
-      li.textContent = input.value;
-      socket.emit('chat message', input.value);
-      input.value = '';
-    }
-    socket.on('chat message', (socket)=> {
-      input.value = socket;
-      messages.appendChild(div);
-      div.appendChild(li) 
-      window.scrollTo(0, document.body.scrollHeight)
-
-    })
-     
-   });
+        })
 
    this.dataClass.textMessage.on('keypress' , e =>{ // enviar mensagem com enter
           if(e.key === 'Enter'){

@@ -1,6 +1,4 @@
-
 // Definição dos campos da tabela
-
 import { Sequelize } from "Sequelize";
 import sequelize from "./db.js";
 

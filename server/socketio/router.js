@@ -4,10 +4,10 @@ import '../../public/src/controller/controller.js'
 
 
 app.get('/login', (req, res) =>{
-    res.render('../../public/src/view/login.html')
+    res.render('login')
 })
 app.get('/cadastro', (req, res) =>{
-  res.render('../../public/src/view/cadastro.html')
+  res.render('cadastro')
 })
 
 

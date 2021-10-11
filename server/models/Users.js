@@ -32,6 +32,6 @@ const User = bd.define('User', {
   
   });
 
-  User.sync()
+/*   User.sync() */
 
   export default User;

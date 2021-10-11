@@ -12,10 +12,6 @@ io.on('connection', socket => {
 io.on('connection', socket => {
   socket.on('chat message', (data) => {
     io.emit('chat message', data)
-    Orchestrator.receiveData({
-      date : new Date(),
-      msg: data,
-      id: socket.id,
-         })
+    Orchestrator.receiveData(data)
       });
   });

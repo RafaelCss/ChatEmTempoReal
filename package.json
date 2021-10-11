@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
- "type": "module",
+  "type": "module",
   "scripts": {
     "start": " node server/models/serverBd/serverbd.js",
     "dev": "nodemon server/socketio/router.js"
@@ -16,6 +16,7 @@
     "bootstrap-icons": "^1.5.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
     "socket.io": "^4.2.0",

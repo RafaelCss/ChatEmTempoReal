@@ -1,4 +1,5 @@
-class InputsKey {
+
+class InputsKey{
 
   constructor(){
     this.elementsProtoType();
@@ -87,26 +88,37 @@ initEvents(){  //eventos de div configuração e add contatos
 
 inputEventMsg(){  // evento de enviar mensagem
     const socket = io()
-  
+    
+    const input = this.dataClass.textMessage
+                const dataUser = {
+                  id : 'Rafael123',
+                  name : 'Rafael',
+                  msg : input.value,
+                  date : new Date(),
+                }
+                
       this.dataClass.submit.on('click',  e => {
              e.preventDefault();
-
-           const input = this.dataClass.textMessage
+             const input = this.dataClass.textMessage
+      
+                const dataUser = {
+                  id : 'Rafael123',
+                  name : 'Rafael',
+                  msg : input.value,
+                  date :new Date(),
+                }
               if(input.value){
-               socket.emit('chat message', input.value)
+               socket.emit('chat message', dataUser)
                  input.value = '';
             }
       
            const messages = this.dataClass.messages
            const name = this.dataClass.seunome
-      if(name ===  'rafael'){
 
-        document.getElementById('msgss').className ='other'
-      }
-            socket.on('chat message', (msg) => {
+            socket.on('chat message',  (dataUser) => {
                 messages.innerHTML +=`
                   <div id='msguser'> 
-                  <li id ='msgss'>${msg}</li>
+                  <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.msg} -${dataUser.date}</div>
                   </div>       
               `
            window.scrollTo(0, document.body.scrollHeight);

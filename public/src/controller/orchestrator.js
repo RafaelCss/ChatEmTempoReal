@@ -1,3 +1,4 @@
+import User from "../../../server/models/Users.js"
 class Orchestrator  {
 
     constructor(date,msg, id){
@@ -11,13 +12,8 @@ class Orchestrator  {
         const dataUser = JSON.stringify(idUser)
         console.log('User conectado :', dataUser)
 
-/*         await User.create({
-                url: 'http://localhost:3000/messagechat/',
-                name :"Rafael",
-                email : "dataUser.msg",
-                password: "12358"
-                  })
- */
+       /*  await User.create(dataUser) */
+
 }
 
     static async receiveMsg (data){
@@ -28,7 +24,7 @@ class Orchestrator  {
     }
 
 
- sendMessage(date,msg, id) {
+     sendMessage(date,msg, id) {
 
      
      

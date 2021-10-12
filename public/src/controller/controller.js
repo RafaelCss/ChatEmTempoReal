@@ -1,4 +1,3 @@
-
 class InputsKey{
 
   constructor(){
@@ -107,6 +106,7 @@ inputEventMsg(){  // evento de enviar mensagem
                   msg : input.value,
                   date :new Date(),
                 }
+                
               if(input.value){
                socket.emit('chat message', dataUser)
                  input.value = '';

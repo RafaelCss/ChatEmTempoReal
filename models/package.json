@@ -1,0 +1,23 @@
+{
+  "name": "MyChat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serverbd.js",
+  "type": "module",
+  "scripts": {
+    "start": " node serverBd/serverbd.js",
+    "dev": "nodemon serverBd/serverbd.js"
+  },
+  "keywords": [],
+  "author": "Rafael Carlos de Souza",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5",
+    "tedious": "^12.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

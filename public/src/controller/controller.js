@@ -96,7 +96,7 @@ inputEventMsg(){  // evento de enviar mensagem
                   date : new Date(),
                 }
                 
-      this.dataClass.submit.on('click',  e => {
+      this.dataClass.submit.on('click keypress',  e => {
              e.preventDefault();
              const input = this.dataClass.textMessage
       
@@ -113,7 +113,6 @@ inputEventMsg(){  // evento de enviar mensagem
             }
       
            const messages = this.dataClass.messages
-           const name = this.dataClass.seunome
 
             socket.on('chat message',  (dataUser) => {
                 messages.innerHTML +=`

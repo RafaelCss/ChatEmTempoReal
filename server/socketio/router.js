@@ -1,12 +1,18 @@
+import express from "express"
+import {Router} from "express"
+import path from "path"
 import { server ,app } from "./serverchat.js";
 import './socket.js'
 import '../../public/src/controller/controller.js'
 
+const router = Router()
 
-app.get('/login', (req, res) =>{
+
+app.use(express.static('public/src/view/login.html'))
+router.get('/login', (req, res) =>{
     res.render('login')
 })
-app.get('/cadastro', (req, res) =>{
+router.get('/cadastro', (req, res) =>{
   res.render('cadastro')
 })
 

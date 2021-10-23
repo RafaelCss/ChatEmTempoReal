@@ -1,11 +1,9 @@
 import  {Sequelize}  from "sequelize";
+import config from "./config/config.js";
 
 // Conexão com Banco de Dados 
 
-const sequelize = new Sequelize('cad_user_chat','root', '42951822' , {
-    host: 'localhost',
-    dialect: 'mysql'
-})
+const sequelize = new Sequelize(config)
 
 
 await  sequelize.authenticate()

@@ -88,24 +88,19 @@ initEvents(){  //eventos de div configuração e add contatos
 inputEventMsg(){  // evento de enviar mensagem
     const socket = io()
     
-    const input = this.dataClass.textMessage
-                const dataUser = {
-                  id : 'Rafael123',
-                  name : 'Rafael',
-                  msg : input.value,
-                  date : new Date(),
-                }
+
                 
       this.dataClass.submit.on('click keypress',  e => {
              e.preventDefault();
              const input = this.dataClass.textMessage
       
-                const dataUser = {
-                  id : 'Rafael123',
-                  name : 'Rafael',
-                  msg : input.value,
-                  date :new Date(),
-                }
+             const dataUser = {
+                name: "Rafael Carlos",
+                message: input.value,
+                photo: this.dataClass.photo.value,
+                time: new Date().getTime(),
+                id: socket.id
+             }   
                 
               if(input.value){
                socket.emit('chat message', dataUser)

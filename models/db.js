@@ -16,4 +16,8 @@ await  sequelize.authenticate()
     console.log('Error : Verifique sua conexão')
 })
 
+
+
+
+
 export default sequelize;

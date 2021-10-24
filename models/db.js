@@ -1,5 +1,7 @@
+import dotenv  from  'dotenv' 
+import config from './config/config.js';
 import  {Sequelize}  from "sequelize";
-import config from "./config/config.js";
+ 
 
 // Conexão com Banco de Dados 
 

@@ -1,6 +1,7 @@
-class InputsKey{
+class InputsKey  {
 
   constructor(){
+ 
     this.elementsProtoType();
     this.loadElements();
     this.initEvents()
@@ -93,15 +94,16 @@ inputEventMsg(){  // evento de enviar mensagem
       this.dataClass.submit.on('click keypress',  e => {
              e.preventDefault();
              const input = this.dataClass.textMessage
-      
+            
              const dataUser = {
                 name: "Rafael Carlos",
                 message: input.value,
                 photo: this.dataClass.photo.value,
-                time: new Date().getTime(),
+                data: new Date().getDay()+ '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
+                time: new Date().getHours() + ":" + new Date().getMinutes(),
                 id: socket.id
              }   
-                
+                                               
               if(input.value){
                socket.emit('chat message', dataUser)
                  input.value = '';
@@ -112,7 +114,9 @@ inputEventMsg(){  // evento de enviar mensagem
             socket.on('chat message',  (dataUser) => {
                 messages.innerHTML +=`
                   <div id='msguser'> 
-                  <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.msg} -${dataUser.date}</div>
+                    <div class='date'>  ${dataUser.data} </div>                    
+                  <div class='msg-photo'> <img src='${dataUser.photo}' alt='foto'></div>
+                  <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.message} -${(dataUser.time)}</div>
                   </div>       
               `
            window.scrollTo(0, document.body.scrollHeight);

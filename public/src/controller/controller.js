@@ -112,14 +112,14 @@ addcontact(){  //eventos de div configuração e add contatos
                e.preventDefault();
                const input = this.dataClass.textMessage
 
-               /*  const dtaPhoto = this.dataClass.profileImg
+/*                 const dtaPhoto = this.dataClass.profileImg
                 const renderPhoto = new FileReader()
                 const myPhoto =  renderPhoto.readAsDataURL(dtaPhoto) */
                
               
                const dataUser = {
                   name: this.dataClass.name,
-                  message: this.dataClass.profileImg.src,
+                  message: input.value,
                   photo:myPhoto,
                   data: new Date().getDay('DD')+ '/' + new Date().getMonth('MM') + '/' + new Date().getFullYear('YY'),
                   time: new Date().getHours() + ":" + new Date().getMinutes(),

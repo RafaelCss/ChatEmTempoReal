@@ -6,6 +6,7 @@ class InputsKey  {
     this.loadElements();
     this.initEvents()
     this.inputEventMsg()
+    this.eventPhotoProfile();  
   }
 
 loadElements(){ // Pegando todos os elementos pelo id da chat...
@@ -70,30 +71,40 @@ initEvents(){  //eventos de div configuração e add contatos
 
       this.dataClass.addcontact.on('click', e =>{ // Click Div addcontatos..
         this.dataClass.contacts.toggle()
-        
+         //criar uma div  que contem espaços para adicionar contatos
+         document.createElement('div')  // criando div
+          this.dataClass.contacts.innerHTML = `     
+          <div class="contact-add">   
+          <input type="text" placeholder="Nome" id="contact-name">
+          <input type="text" placeholder="Email" id="contact-email">  
+          <button id="contact-add">Adicionar</button>   
+          </div>  `
+         /*  this.dataClass.contactAdd.on('click', e =>{ // Click Adicionar contato..
+            this.dataClass.contacts.toggle()
+            this.dataClass.contactName.value = '';
 
+      }) */
+    })
 
-      })
 
       this.dataClass.settings.on('click', fn=>{  // Click Div div confirações..
-        this.dataClass.contacts.toggle()
+        this.dataClass.settings.toggle()  
+        // criar uma div  que contem espaços para alterar configurações
+
+          document.createElement('div')  // criando div
+          this.dataClass.settings.innerHTML = `         
+          <div class="settings-add">   
+          <input type="text" placeholder="Nome" id="settings-name">
+          <input type="text" placeholder="Email" id="settings-email">  
+          <button id="settings-add">Adicionar</button>   
+          </div>  `
+          this.dataClass.settingsAdd.on('click', e =>{ // Click Adicionar configurações..
+            this.dataClass.settings.toggle()
+            this.dataClass.settingsName.value = '';
+            this.dataClass.settingsEmail.value = '';
+          })                
 
       })
-
-      this.dataClass.profileImg.on("click", fn =>{  // add foto de perfil 
-        const {photo} = this.dataClass  // pega o valor do input photo
-        photo.on('change', e =>{  // quando eu clico em add foto..    
-          const file = photo.files[0] // pego o arquivo  
-          const reader = new FileReader() // crio um leitor de arquivo    
-          reader.onload = e =>{ // quando eu ler o arquivo.. 
-          this.dataClass.profileImg.src = e.target.result // eu pego o arquivo e faço o upload
-
-          } 
-          reader.readAsDataURL(file) // faço o upload
-        })    
-      
-    })
-    
     
   }
   
@@ -102,14 +113,14 @@ initEvents(){  //eventos de div configuração e add contatos
   
                   
         this.dataClass.submit.on('click keypress',  e => {
-          if(e.type === 'click' || e.keyCode === 13){
+          if(e.type === 'click' || e.keypress === 13){
                e.preventDefault();
                const input = this.dataClass.textMessage
               
                const dataUser = {
                   name: "Rafael Carlos",
                   message: input.value,
-                  photo: this.dataClass.photo.value,
+                  photo:this.dataClass.photo.src,
                   data: new Date().getDay('DD')+ '/' + new Date().getMonth('MM') + '/' + new Date().getFullYear('YY'),
                   time: new Date().getHours() + ":" + new Date().getMinutes(),
                   id: socket.id
@@ -126,25 +137,50 @@ initEvents(){  //eventos de div configuração e add contatos
                   messages.innerHTML +=`
                     <div id='msguser'> 
                       <div class='date'>  ${dataUser.data} </div>                    
-                    <div class='msg-photo'> <img src='${dataUser.photo}' alt='foto'></div>
+                    <div class='msg-photo'> <img src=${dataUser.photo} alt='foto'></div>
                     <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.message} -${(dataUser.time)}</div>
                     </div>       
                 `
-             window.scrollTo(0, document.body.scrollHeight);
+                   window.scrollTo(0, document.body.scrollHeight);
   
-               });
+                });
        
-          } 
+              } 
           
           })
         
-    /*  this.dataClass.textMessage.on('keypress' , e =>{ // enviar mensagem com enter
-            if(e.key === 'Enter'){
-          this.dataClass.submit.click()
-              }
-        }) */ 
+           this.dataClass.textMessage.on('keypress' , e =>{ // enviar mensagem com enter
+                      if(e.key === 'Enter'){
+                    this.dataClass.submit.click()
+               }
+        })  
    } 
+
+
+eventPhotoProfile(){ // evento de carregar  foto de perfil
+
+    this.dataClass.myPhoto.on("click", fn =>{  // clica na div foto de perfil
+     this.dataClass.photo.click()  // add foto de perfil
+      const {photo} = this.dataClass  // pega o valor do input photo
+     
+      photo.on('change', e =>{  // quando eu clico em add foto..    
+        const file = photo.files[0] // pego o arquivo  
+        const reader = new FileReader() // crio um leitor de arquivo    
+
+        reader.onload = e =>{ // quando eu ler o arquivo.. 
+
+          this.dataClass.profileImg.src = e.target.result // eu pego o arquivo e faço o upload
+
+        } 
+
+        reader.readAsDataURL(file) // faço o upload
+
+      })    
+    
+  })
   
 }
 
+
+}
 

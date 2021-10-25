@@ -4,9 +4,10 @@ class InputsKey  {
  
     this.elementsProtoType();
     this.loadElements();
-    this.initEvents()
+    this.addcontact()
     this.inputEventMsg()
     this.eventPhotoProfile();  
+    this.settings()
   }
 
 loadElements(){ // Pegando todos os elementos pelo id da chat...
@@ -67,42 +68,36 @@ elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
   }
 
 
-initEvents(){  //eventos de div configuração e add contatos
+addcontact(){  //eventos de div configuração e add contatos
 
       this.dataClass.addcontact.on('click', e =>{ // Click Div addcontatos..
         this.dataClass.contacts.toggle()
          //criar uma div  que contem espaços para adicionar contatos
-         document.createElement('div')  // criando div
+
           this.dataClass.contacts.innerHTML = `     
           <div class="contact-add">   
           <input type="text" placeholder="Nome" id="contact-name">
           <input type="text" placeholder="Email" id="contact-email">  
           <button id="contact-add">Adicionar</button>   
           </div>  `
-         /*  this.dataClass.contactAdd.on('click', e =>{ // Click Adicionar contato..
-            this.dataClass.contacts.toggle()
-            this.dataClass.contactName.value = '';
+      })
 
-      }) */
-    })
+  }
 
+  settings(){ // alterar as  confirações.
 
       this.dataClass.settings.on('click', fn=>{  // Click Div div confirações..
-        this.dataClass.settings.toggle()  
-        // criar uma div  que contem espaços para alterar configurações
-
-          document.createElement('div')  // criando div
-          this.dataClass.settings.innerHTML = `         
+        this.dataClass.contacts.toggle()  
+        
+          this.dataClass.contacts.innerHTML = `         
           <div class="settings-add">   
           <input type="text" placeholder="Nome" id="settings-name">
-          <input type="text" placeholder="Email" id="settings-email">  
-          <button id="settings-add">Adicionar</button>   
-          </div>  `
-          this.dataClass.settingsAdd.on('click', e =>{ // Click Adicionar configurações..
-            this.dataClass.settings.toggle()
-            this.dataClass.settingsName.value = '';
-            this.dataClass.settingsEmail.value = '';
-          })                
+          <input type="text" placeholder="Email" id="settings-email">
+          <input type="text" placeholder="Senha" id="settings-password"> 
+          <label for="settings-photo">Escolher foto do Perfil: </label>
+          <input type="file" name="photo-settings" id="photo-settings" style = "display :">     
+          <button type="submit" id="settings-add">Salvar</button>   
+          </div>  `               
 
       })
     
@@ -113,14 +108,19 @@ initEvents(){  //eventos de div configuração e add contatos
   
                   
         this.dataClass.submit.on('click keypress',  e => {
-          if(e.type === 'click' || e.keypress === 13){
+        
                e.preventDefault();
                const input = this.dataClass.textMessage
+
+                const dtaPhoto = this.dataClass.profileImg.src
+                const renderPhoto = new FileReader()
+                const myPhoto =  renderPhoto.readAsDataURL(dtaPhoto)
+               
               
                const dataUser = {
-                  name: "Rafael Carlos",
+                  name: this.dataClass.name,
                   message: input.value,
-                  photo:this.dataClass.photo.src,
+                  photo:myPhoto,
                   data: new Date().getDay('DD')+ '/' + new Date().getMonth('MM') + '/' + new Date().getFullYear('YY'),
                   time: new Date().getHours() + ":" + new Date().getMinutes(),
                   id: socket.id
@@ -133,28 +133,26 @@ initEvents(){  //eventos de div configuração e add contatos
         
              const messages = this.dataClass.messages
   
-              socket.on('chat message',  (dataUser) => {
-                  messages.innerHTML +=`
-                    <div id='msguser'> 
+                  socket.on('chat message',  (dataUser) => {
+                      messages.innerHTML +=`
+                      <div id='msguser'> 
                       <div class='date'>  ${dataUser.data} </div>                    
-                    <div class='msg-photo'> <img src=${dataUser.photo} alt='foto'></div>
-                    <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.message} -${(dataUser.time)}</div>
-                    </div>       
-                `
-                   window.scrollTo(0, document.body.scrollHeight);
+                      <div class='msg-photo'> <img src=${dataUser.photo} alt='foto'></div>
+                      <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.message} -${(dataUser.time)}</div>
+                      </div>       
+                      `
+                      window.scrollTo(0, document.body.scrollHeight);
   
-                });
+                  });
        
-              } 
-          
-          })
+              }) 
         
            this.dataClass.textMessage.on('keypress' , e =>{ // enviar mensagem com enter
                       if(e.key === 'Enter'){
                     this.dataClass.submit.click()
                }
         })  
-   } 
+  }
 
 
 eventPhotoProfile(){ // evento de carregar  foto de perfil

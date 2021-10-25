@@ -112,14 +112,14 @@ addcontact(){  //eventos de div configuração e add contatos
                e.preventDefault();
                const input = this.dataClass.textMessage
 
-                const dtaPhoto = this.dataClass.profileImg.src
+               /*  const dtaPhoto = this.dataClass.profileImg
                 const renderPhoto = new FileReader()
-                const myPhoto =  renderPhoto.readAsDataURL(dtaPhoto)
+                const myPhoto =  renderPhoto.readAsDataURL(dtaPhoto) */
                
               
                const dataUser = {
                   name: this.dataClass.name,
-                  message: input.value,
+                  message: this.dataClass.profileImg.src,
                   photo:myPhoto,
                   data: new Date().getDay('DD')+ '/' + new Date().getMonth('MM') + '/' + new Date().getFullYear('YY'),
                   time: new Date().getHours() + ":" + new Date().getMinutes(),
@@ -157,10 +157,10 @@ addcontact(){  //eventos de div configuração e add contatos
 
 eventPhotoProfile(){ // evento de carregar  foto de perfil
 
-    this.dataClass.myPhoto.on("click", fn =>{  // clica na div foto de perfil
-     this.dataClass.photo.click()  // add foto de perfil
+         this.dataClass.myPhoto.on("click", fn =>{  // clica na div foto de perfil
+           this.dataClass.photo.click()  // add foto de perfil
       const {photo} = this.dataClass  // pega o valor do input photo
-     
+    
       photo.on('change', e =>{  // quando eu clico em add foto..    
         const file = photo.files[0] // pego o arquivo  
         const reader = new FileReader() // crio um leitor de arquivo    

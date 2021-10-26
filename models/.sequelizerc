@@ -1,5 +1,0 @@
-/* import path  from 'path' */
-/* 
- export default { config : path.resolve(__dirname , 'config' , 'config.js' ),
-                 'migrations-path' : path.resolve(__dirname, 'migrations')} 
- */

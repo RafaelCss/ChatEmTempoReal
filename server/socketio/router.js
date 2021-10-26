@@ -1,18 +1,31 @@
-import {Router} from "express"
-import { server ,app } from "./serverchat.js";
+import express  from "express";
+import { router } from "./serverchat.js";
+import path from 'path';
+import {server} from "./serverchat.js"; 
 import './socket.js'
 import '../../public/src/controller/controller.js'
-
-const router = Router()
-
+const __dirname = path.resolve();
 
 
-router.get('/login', (req, res) =>{
-    res.render('login')
+router.get("/chat" , (req, res) => { 
+
+ res.sendFile(path.join(__dirname + '/public/src/view/chat.html'));
+    
 })
-router.get('/cadastro', (req, res) =>{
-  res.render('cadastro')
-})
+
+router.get("/" , (req, res , next) => { 
+
+ res.sendFile(path.join(__dirname + '/public/src/view/index.html'));
+
+
+ })
+
+
+router.get("/cadastro" , (req, res) => { 
+    
+ res.sendFile(path.join(__dirname + '/public/src/view/cadastro.html'));
+        
+ })
 
 
 

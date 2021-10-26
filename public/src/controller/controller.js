@@ -112,15 +112,15 @@ addcontact(){  //eventos de div configuração e add contatos
                e.preventDefault();
                const input = this.dataClass.textMessage
 
-/*                 const dtaPhoto = this.dataClass.profileImg
+/*              const dtaPhoto = this.dataClass.profileImg
                 const renderPhoto = new FileReader()
                 const myPhoto =  renderPhoto.readAsDataURL(dtaPhoto) */
                
               
                const dataUser = {
-                  name: this.dataClass.name,
+                  name: "Rafael",
                   message: input.value,
-                  photo:myPhoto,
+                  photo:this.dataClass.profileImg,
                   data: new Date().getDay('DD')+ '/' + new Date().getMonth('MM') + '/' + new Date().getFullYear('YY'),
                   time: new Date().getHours() + ":" + new Date().getMinutes(),
                   id: socket.id
@@ -137,7 +137,7 @@ addcontact(){  //eventos de div configuração e add contatos
                       messages.innerHTML +=`
                       <div id='msguser'> 
                       <div class='date'>  ${dataUser.data} </div>                    
-                      <div class='msg-photo'> <img src=${dataUser.photo} alt='foto'></div>
+                      <div class='msg-photo'> <img  src=${dataUser.photo.src} alt='foto'></div>
                       <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.message} -${(dataUser.time)}</div>
                       </div>       
                       `

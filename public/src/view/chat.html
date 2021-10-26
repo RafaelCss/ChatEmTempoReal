@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First one chat</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+  
+</head>
+<body>
+  
+  <div id="frame">
+    <div id="sidepanel">
+      <div id="profile">
+        <div class="wrap" id="my-photo">
+          <input type="file" name="photo" id="photo" style ='display :none'>
+          <img id="profile-img" src=" "class="online" alt="" />
+          <p class="name" id="name">Mike Ross</p>
+          <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
+          <div id="status-options">
+            <ul>
+              <li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
+              <li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
+              <li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
+              <li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
+            </ul>
+          </div>
+          <div id="expanded">
+            <label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
+            <input name="twitter" type="text" value="mikeross" />
+            <label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
+            <input name="twitter" type="text" value="ross81" />
+            <label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
+            <input name="twitter" type="text" value="mike.ross" />
+          </div>
+        </div>
+      </div>
+      <div id="search">          
+        <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+        <input type="text" placeholder="Search contacts..." />
+      </div>
+      <div id="contacts">        
+        <ul>
+          <li class="contact">
+            <div class="wrap"  id="wrap-contact">
+              <span class="contact-status online"></span>
+              <img src="" alt="" />
+              <div class="meta">
+                <p class="name"></p>
+                <p class="preview"></p>
+              </div>
+            </div>
+          </li>
+          <li class="contact active">
+            <div class="wrap" id="contact active" >
+              <span class="contact-status busy"></span>
+              <img src="" alt="" />
+              <div class="meta">
+                <p class="name"></p>
+                <p class="preview"></p>
+              </div>
+            </div>
+          </li>
+          <li class="contact">
+            <div class="wrap" id="wrap">
+              <span class="contact-status away"></span>
+              <img src="" alt="" />
+              <div class="meta">
+                <p class="name"></p>
+                <p class="preview"></p>
+              </div>
+            </div>
+          </li>
+      </div>
+
+      <div id="panelAddcontact" >
+    
+         
+      </div>
+
+      <div id="panelSttings">
+      
+         
+      </div>
+      <div id="bottom-bar">
+        <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+        <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+      </div>
+    </div>
+    <div class="content" id="content">
+      <div class="contact-profile" id="contact-profile">
+        <img src="" alt="" />
+        <p>Harvey Specter</p>
+        <div class="social-media" id="social-media">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+           <i class="fa fa-instagram" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="messages" id="messages">
+
+         
+       </div>
+       
+      
+      <div class="message-input" id="message-input">
+        <div class="wrap"  id="wrap-input-button">
+        <input type="text" placeholder="Write your message..."  id="text-message"/>
+        <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+        <i class="bi bi-mic attachment" aria-hidden="true"></i>
+        <button class="submit" id="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/public/src/util/format.js"></script>
+  <script src="/public/src/controller/controller.js"></script>
+  <script src="/public/src/app.js"></script>
+
+
+</body>
+</html>

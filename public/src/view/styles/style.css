@@ -676,12 +676,20 @@ body {
 
 #panelAddcontact{
 
-width: 50px;
-background-color: #070707;
-height: 50px;
+width:200px;
+height:200px;
 
 
 }
+
+
+#panelSttings{
+
+  width:200px;
+  height:200px;
+  
+  
+  }
 
 li{
 
@@ -712,5 +720,19 @@ li .other{
 
   color: #e74c3c;
   margin-right: 1px;
+
+}
+
+img {
+  border-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  display: list-item;
+  text-align: left;
+  list-style: none;
 
 }

@@ -5,7 +5,7 @@ CREATE TABLE `Post` (
     `updatedAt` DATETIME(3) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
-    `name` BOOLEAN NOT NULL DEFAULT false,
+    `name` VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

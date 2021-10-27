@@ -84,7 +84,7 @@ addcontact(){  //eventos de div configuração e add contatos
 
   }
 
-  settings(){ // alterar as  confirações.
+settings(){ // alterar as  confirações.
 
       this.dataClass.settings.on('click', fn=>{  // Click Div div confirações..
         this.dataClass.contacts.toggle()  
@@ -103,7 +103,7 @@ addcontact(){  //eventos de div configuração e add contatos
     
   }
   
-  inputEventMsg(){  // evento de enviar mensagem
+inputEventMsg(){  // evento de enviar mensagem
       const socket = io()
   
                   

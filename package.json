@@ -12,6 +12,7 @@
   "author": "Rafael Carlos de Souza",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "bootstrap": "^5.1.1",
     "bootstrap-icons": "^1.5.0",
     "ejs": "^3.1.6",

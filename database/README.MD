@@ -4,8 +4,11 @@
 ## Configurações :
 
 
-# Para criar as migrations com prisma : npx prisma migrate dev --name init
+# Para criar as migrations com prisma : npx prisma migrate dev --name 'nome da atualização'
 
+# para aplicar uma migration : npx prisma migrate up --name 'nome da atualização'
+
+# para resolver uma migration : npx prisma migrate down --name 'nome da atualização'
 # O que ele executa :
 
 . Ele cria um novo arquivo de migração SQL para esta migração

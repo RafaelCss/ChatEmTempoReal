@@ -1,7 +1,7 @@
-class InputsKey  {
+class InputsKey {
 
   constructor(){
- 
+    
     this.elementsProtoType();
     this.loadElements();
     this.addcontact()
@@ -125,11 +125,13 @@ inputEventMsg(){  // evento de enviar mensagem
                   time: new Date().getHours() + ":" + new Date().getMinutes(),
                   id: socket.id
                }   
-                                                 
+                   
+               Orchestrator.sendMessage(dataUser) 
+             
                 if(input.value){
                  socket.emit('chat message', dataUser)
                    input.value = '';
-              }
+               }
         
              const messages = this.dataClass.messages
   

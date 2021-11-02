@@ -15,7 +15,7 @@
         <div class="content">      
           <!--FORMULÁRIO DE LOGIN-->
           <div id="login">
-            <form method="get" action="index.html"> 
+            <form method="get" action="chat.html" id="form"> 
               <h1>Login</h1> 
               <p> 
                 <label for="email_login">Seu e-mail</label>
@@ -33,7 +33,7 @@
               </p>
               
               <p> 
-                <input type="submit" value="Logar" /> 
+                <input type="submit" value="Logar" id="logar" /> 
               </p>
               
               
@@ -43,5 +43,8 @@
       
         </div>
       </div> 
+      <script  type="module" src="/public/src/controller/service.js"></script>
+      <script type="module" src="/public/src/controller/formcad.js"></script>
+      
 </body>
 </html>

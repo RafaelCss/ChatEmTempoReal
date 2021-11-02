@@ -23,6 +23,26 @@ const user = await prisma.cadastro.create({
 
 
   })
+
+
+
+  router.get('/login', async (req, res) =>{
+
+    const {email, password} = req.body
+    const user = await prisma.cadastro.findMany({
+        select: {
+            email,
+            password,
+        }
+    }).then(user => {
+        res.send(`Logando... : ${user}`)
+    }).catch(err => {
+      res.send(`Usuário não cadastrado ou senha incorreta`)
+      console.log(err)
+    })
+    
+    
+      })
     
    
 

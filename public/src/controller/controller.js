@@ -103,20 +103,17 @@ settings(){ // alterar as  confirações.
     
   }
   
-inputEventMsg(){  // evento de enviar mensagem
+  
+  inputEventMsg(){  // evento de enviar mensagem
       const socket = io()
   
                   
         this.dataClass.submit.on('click keypress',  e => {
         
                e.preventDefault();
+                  
                const input = this.dataClass.textMessage
-
-/*              const dtaPhoto = this.dataClass.profileImg
-                const renderPhoto = new FileReader()
-                const myPhoto =  renderPhoto.readAsDataURL(dtaPhoto) */
                
-              
                const dataUser = {
                   name: "Rafael",
                   message: input.value,
@@ -126,7 +123,6 @@ inputEventMsg(){  // evento de enviar mensagem
                   id: socket.id
                }   
                    
-               Orchestrator.sendMessage(dataUser) 
              
                 if(input.value){
                  socket.emit('chat message', dataUser)
@@ -156,18 +152,17 @@ inputEventMsg(){  // evento de enviar mensagem
         })  
   }
 
-
 eventPhotoProfile(){ // evento de carregar  foto de perfil
 
-         this.dataClass.myPhoto.on("click", fn =>{  // clica na div foto de perfil
-           this.dataClass.photo.click()  // add foto de perfil
+      this.dataClass.myPhoto.on("click", fn =>{  // clica na div foto de perfil
+      this.dataClass.photo.click()  // add foto de perfil
       const {photo} = this.dataClass  // pega o valor do input photo
     
-      photo.on('change', e =>{  // quando eu clico em add foto..    
-        const file = photo.files[0] // pego o arquivo  
-        const reader = new FileReader() // crio um leitor de arquivo    
+        photo.on('change', e =>{  // quando eu clico em add foto..    
+          const file = photo.files[0] // pego o arquivo  
+          const reader = new FileReader() // crio um leitor de arquivo    
 
-        reader.onload = e =>{ // quando eu ler o arquivo.. 
+          reader.onload = e =>{ // quando eu ler o arquivo.. 
 
           this.dataClass.profileImg.src = e.target.result // eu pego o arquivo e faço o upload
 

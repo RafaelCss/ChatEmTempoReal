@@ -1,26 +1,50 @@
-// formulario de cadastro de usuario
-// ============================================================
+import Orchestrator from "./orchestrator.js";
+class FormCad  {
 
+     constructor (btnCadastrar, formCadastro){
 
-class FormCad {
+         this.dataformcad(btnCadastrar, formCadastro);
+  
+                         
+     }
+ 
+     
+    dataformcad(btnCadastrar,formCadastro) { // pega todas as informações do formlario de cadastro
+        
+        this.btn = document.querySelector(btnCadastrar)
 
-    constructor (){
-     this.dataformcad()            
+        this.formCadastro = document.querySelector(formCadastro)
+        
+        const data = {}
 
-    }
+        this.btn.addEventListener('click', e =>{
 
-    dataformcad () { // pega todas as informações do formlario de cadastro
+        [...this.formCadastro].forEach(form=>{
 
-            const dataUser = {}
-    addEventListener('submit', (e) => {
-            document.querySelectorAll("#cadastro").forEach(element =>{
-
-            dataUser[Format.getCamelCase(element.id)] = element.value
+            data[form.name] = form.value
 
         })
-            console.log(dataUser)
-    })
+            
+        this.edit(data)
+      })
+    }
 
-}       
 
-}
+async edit(data){ // edita o cadastro
+
+        const {email_cad, nome_cad, senha_cad} = data
+
+        const user = {
+            email: email_cad,
+            name: nome_cad,
+            password: senha_cad
+        }
+
+        const orquestrador = new Orchestrator(user)
+        
+    }
+
+}   
+
+
+export default FormCad

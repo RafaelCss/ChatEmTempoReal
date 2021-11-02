@@ -1,42 +1,32 @@
 
-class Orchestrator  {
+class Orchestrator {
 
-    static async sendMessage(data){
+    constructor(user){
+       this.cadatroUser(user)
+    }
+    
 
-        let response = {
-            status: 200,
-            data: data
-        };
-
-        return response;
-
+ async cadatroUser(user){
+        
+    const response = await fetch('http://localhost:3333/cadastro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(response => console.log(response))
+    .catch(err => console.log(err))
+            
     }
 
-    static async receiveData (data){
+  async logarUser (){
 
-        let response = {
-            status: 200,
-            data: data
-        };
+    
 
-        return response;
 
-    }
-
-    static async sendError (error){
-
-        let response = {
-            status: 500,
-            error: error
-        };
-
-        return response;
-
-    }
+    } 
 
 
 
-}
-
-
-export default Orchestrator;
+}    
+export default Orchestrator

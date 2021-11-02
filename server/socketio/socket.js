@@ -1,5 +1,4 @@
 import { io } from "./serverchat.js";
-import Orchestrator from '../../public/src/controller/orchestrator.js';
 import '../../public/src/controller/controller.js'
 
 io.on('connection', socket => {
@@ -12,6 +11,5 @@ io.on('connection', socket => {
 io.on('connection', socket => {
   socket.on('chat message', (data) => {
     io.emit('chat message', data)
-    Orchestrator.receiveData(data)
       });
   });

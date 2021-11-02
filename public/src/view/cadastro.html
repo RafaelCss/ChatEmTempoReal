@@ -9,8 +9,8 @@
 </head>
 <body>
         <!--FORMULÁRIO DE CADASTRO-->
-        <div id="cadastro" style="">
-            <form method="#" action=""> 
+        <div id="cadastror">
+            <form id="form"> 
               <h1>Cadastro</h1> 
 
               <p> 
@@ -29,7 +29,7 @@
               </p>
               
               <p> 
-                <input type="submit" value="Cadastrar"/> 
+                <button type="submit"  class="submit" id="cadastrar" >Cadastrar</button>
               </p>
               
               <p class="link">  
@@ -39,7 +39,8 @@
             </form>
           </div>
 
-          <script src="../controller/formcad.js"></script>
-          <script src="/public/src/util/format.js"></script>
+          <script  type="module" src="/public/src/controller/service.js"></script>
+          <script type="module" src="/public/src/controller/formcad.js"></script>
+      
 </body>
 </html>

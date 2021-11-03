@@ -1,4 +1,4 @@
-import Orchestrator from "./orchestrator.js";
+import Orchestrator from './orchestrator.js'
 class FormCad  {
 
      constructor (btnCadastrar, formCadastro){
@@ -18,7 +18,7 @@ class FormCad  {
         const data = {}
 
         this.btn.addEventListener('click', e =>{
-
+            e.preventDefault();
         [...this.formCadastro].forEach(form=>{
 
             data[form.name] = form.value
@@ -40,8 +40,18 @@ async edit(data){ // edita o cadastro
             password: senha_cad
         }
 
-        const orquestrador = new Orchestrator(user)
-        
+    const response  =  Orchestrator.cadatroUser(user)
+        response.then(res=>{
+            console.log(res)
+            if(res === 200){
+                alert('Cadastro realizado com sucesso')
+           
+             } if(res === 'Bad Request'){
+                alert('Email já cadastrado')
+            }
+        }).catch(err=>{
+            console.log(err)
+        })
     }
 
 }   

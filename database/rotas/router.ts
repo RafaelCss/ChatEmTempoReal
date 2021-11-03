@@ -15,9 +15,11 @@ const user = await prisma.cadastro.create({
         updatedAt: new Date(),
     }
 }).then(user => {
+
     res.send(`Usuário Criado com Sucesso : ${user.email}`)
 }).catch(err => {
-  res.send(`Usuário já existe ou houve um erro`)
+ 
+  res.status(400).send(`Usuário já existe ou houve um erro`)
   console.log(err)
 })
 
@@ -28,16 +30,24 @@ const user = await prisma.cadastro.create({
 
   router.get('/login', async (req, res) =>{
 
-    const {email, password} = req.body
+    const {email,password} = req.body
+
     const user = await prisma.cadastro.findMany({
-        select: {
-            email,
-            password,
+      where: {
+           email : email,
+           password : password
         }
     }).then(user => {
-        res.send(`Logando... : ${user}`)
+      if(user.length > 0){
+      return  res.send({
+        message: 'Usuário Logado com Sucesso',
+        user: user[0].email,
+        status: 200
+        }).status(200)
+      }else{
+        return res.send(`Usuário não encontrado`).status(400)
+      }
     }).catch(err => {
-      res.send(`Usuário não cadastrado ou senha incorreta`)
       console.log(err)
     })
     

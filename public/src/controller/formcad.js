@@ -42,7 +42,7 @@ async edit(data){ // edita o cadastro
 
     const response  =  Orchestrator.cadatroUser(user)
         response.then(res=>{
-            console.log(res)
+           
             if(res === 200){
                 alert('Cadastro realizado com sucesso')
            
@@ -50,7 +50,7 @@ async edit(data){ // edita o cadastro
                 alert('Email já cadastrado')
             }
         }).catch(err=>{
-            console.log(err)
+            console.error(err)
         })
     }
 

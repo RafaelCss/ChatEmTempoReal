@@ -1,6 +1,5 @@
 import Orchestrator from './orchestrator.js'
-
-class Login  {
+class Login  { // faz o login
 
      constructor (btnLogar, formLogar){
 
@@ -9,7 +8,7 @@ class Login  {
                          
      }
  
-     
+     //pega os dados do formulario
     dataLogin(btnLogar,formLogar) { // pega todas as informações do formlario de cadastro
         
         this.btn = document.querySelector(btnLogar)
@@ -29,8 +28,8 @@ class Login  {
         this.startLogin(data)
       })
     }
-
-startLogin(data){
+// inicia o login
+ async startLogin(data){
    const {email_login, senha_login} = data;
 
    const login = {
@@ -39,10 +38,22 @@ startLogin(data){
          password: senha_login
    }
    
-   console.log(login)
+   const response =  Orchestrator.logarUser(login)
 
-   const response = Orchestrator.logarUser(login)
-}
+    response.then(res =>{
+
+        if(res === 200){
+
+            window.location.href = './chat.html'
+        }
+          }).catch(err =>{
+
+          console.error(err)
+             
+         }) 
+ 
+
+    }
     
 
 }

@@ -28,22 +28,27 @@ const user = await prisma.cadastro.create({
 
 
 
-  router.get('/login', async (req, res) =>{
+   router.post('/login', async (req, res) =>{
 
     const {email,password} = req.body
 
     const user = await prisma.cadastro.findMany({
       where: {
            email : email,
-           password : password
-        }
+           password : password,
+      }       
+           
     }).then(user => {
       if(user.length > 0){
+      const data = {
+       name: user[0].name,
+        email: user[0].email,
+       }
+
       return  res.send({
-        message: 'Usuário Logado com Sucesso',
-        user: user[0].email,
-        status: 200
+        data
         }).status(200)
+
       }else{
         return res.send(`Usuário não encontrado`).status(400)
       }
@@ -53,13 +58,29 @@ const user = await prisma.cadastro.create({
     
     
       })
-    
+     
    
 
-router.get('/', (req, res) => {
-    res.send('Rota de rotas')
+/* router.post('/login', (req, res) => {
+    const {email,password} = req.body
+    const user = prisma.cadastro.findMany({
+       where: {
+            email : email,
+      }
+}).then(user => {
+  const data = {
+    name: user[0].name,
+    email: user[0].email,
+  }
+console.log(data)
+
+res.send(data)
+
 })
 
+
+})
+ */
 
 
 

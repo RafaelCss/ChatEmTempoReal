@@ -2,43 +2,10 @@ import { router } from "./serverchat.js";
 import path from 'path';
 import {server} from "./serverchat.js"; 
 import './socket.js'
-import axios from 'axios'
 const __dirname = path.resolve();
 
 
-router.get("/chat" , (req, res , next) => { 
-    
-  res.sendFile(path.join(__dirname + '/public/src/view/chat.html'));
- 
- 
-  })
-  const api = axios.create({
-    baseURL: 'http://localhost:3333/cadastro'
-})
 
-
-
-
-
-
-   const instance = axios.create({
-    baseURL: 'http://localhost:3333/',
-    timeout: 1000,
-    headers: {'X-Custom-Header': 'a'}
-  });
-
-
-
-
-
-  
-
-router.get("/" , (req, res , next) => { 
-
- res.sendFile(path.join(__dirname + '/public/src/view/index.html'));
-
-
- })
 
 
 router.get("/cadastro" , (req, res) => { 
@@ -46,7 +13,25 @@ router.get("/cadastro" , (req, res) => {
  res.sendFile(path.join(__dirname + '/public/src/view/cadastro.html'));
         
  })
+  
 
+router.get("/" , (req, res , next) => { 
+
+ res.sendFile(path.join(__dirname + '/public/src/view/index.html'));
+
+      next();
+ })
+
+
+ router.get("/chat" , (req, res, next, params) => { 
+
+    if(params === 200){
+        res.sendFile(path.join(__dirname + '/public/src/view/chat.html'));
+    }else{
+        res.redirect("/");
+    } 
+ 
+  })
 
 
 
@@ -58,10 +43,7 @@ server.listen(3000, ()=>{
   
 
 
-
-
-export default api 
-
+export default router;
 
 
 

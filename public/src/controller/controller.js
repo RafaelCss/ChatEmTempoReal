@@ -1,3 +1,5 @@
+import Login from "./login.js";
+import Format from "../util/format.js";
 class InputsKey {
 
   constructor(){
@@ -106,8 +108,7 @@ settings(){ // alterar as  confirações.
   
   inputEventMsg(){  // evento de enviar mensagem
       const socket = io()
-  
-                  
+            
         this.dataClass.submit.on('click keypress',  e => {
         
                e.preventDefault();
@@ -179,3 +180,4 @@ eventPhotoProfile(){ // evento de carregar  foto de perfil
 
 }
 
+export default InputsKey

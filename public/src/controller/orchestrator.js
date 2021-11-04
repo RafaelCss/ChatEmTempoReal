@@ -2,11 +2,12 @@
 class Orchestrator {
 
  
-
+// static async cadastrarUser (user){ //user = {nome, email, senha}
 static async cadatroUser(user){
         
     const response = await fetch('http://localhost:3333/cadastro', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -15,45 +16,49 @@ static async cadatroUser(user){
         if(response.status === 200 ){
             return response.status;
         }else{
-           console.log(response.status); 
+         
                 return  response.statusText
             }     
         }).catch(err =>{
-            console.log(`Erro ao realizar requisição ${err, response}`);
-        });
-    /* .catch(err =>{ 
-        console.log(err);
-        if(err === 400){
-        console.log('Erro 400')
-        }
-      })   */     
+            console.error(`Erro ao realizar requisição ${err, response}`);
+        });   
 
       return response
     }
 
- static async logarUser (login){
+ static async logarUser (login){ //login = {email, senha}
 
-    const response = await fetch('http://localhost:3333/login', {
-        method: 'GET',
+    const response = await fetch(`http://localhost:3333/login`, {
+        method: 'POST',
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
+        body:JSON.stringify(login)
     }).then(response =>{
         if(response.status === 200 ){
-            return response.status;
+            return  200
         }else{
            console.log(response.status); 
-                return  response.statusText
-            }     
+                return  400
+            }      
         }).catch(err =>{
             console.log(`Erro ao realizar requisição ${err}`);
         });
-
+        this.dataProcessing(response);
+    return response
 
     } 
 
+    static async dataProcessing (response){ // tratando os dados de login
 
+        console.log(response);
+
+
+
+
+
+    }
 
 }    
 export default Orchestrator

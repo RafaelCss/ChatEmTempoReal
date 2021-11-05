@@ -42,9 +42,12 @@ class Login  { // faz o login
 
     response.then(res =>{
 
-        if(res === 200){
-
+        if(res.status === 200){
             window.location.href = './chat.html'
+        }else {
+
+            alert(res.message)
+
         }
           }).catch(err =>{
 

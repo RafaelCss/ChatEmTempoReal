@@ -3,7 +3,7 @@ const app = express()
 import  http  from 'http';
 import { Server}  from "socket.io";
 import path from 'path';
-
+import ejs from 'ejs';
 
 
 
@@ -12,7 +12,8 @@ const server = http.createServer(app);
 const io =  new Server(server)
 const router = express.Router()
 app.use(router)
- 
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html') 
 
 
 

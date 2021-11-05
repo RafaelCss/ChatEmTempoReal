@@ -1,59 +1,66 @@
-
+        const urlCadastro = 'http://localhost:3333/cadastro';
+        const urlLogin = 'http://localhost:3333/login';
 class Orchestrator {
 
- 
+    
 // static async cadastrarUser (user){ //user = {nome, email, senha}
 static async cadatroUser(user){
         
-    const response = await fetch('http://localhost:3333/cadastro', {
+    const response = await fetch(urlCadastro, {
         method: 'POST',
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
+
     }).then(response =>{
-        if(response.status === 200 ){
-            return response.status;
-        }else{
-         
-                return  response.statusText
-            }     
+
+        const data = response.json()
+
+        return data
+      
         }).catch(err =>{
-            console.error(`Erro ao realizar requisição ${err, response}`);
+
+        const erro = err.json()
+
+        return erro
+            
         });   
 
       return response
     }
 
- static async logarUser (login){ //login = {email, senha}
+ static async logarUser (login){ //login = {email, senha} e retorna o nome do usuário e email.
+        try {
+            const response = await fetch(urlLogin, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify(login)
+                       })
 
-    const response = await fetch(`http://localhost:3333/login`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(login)
-    }).then(response =>{
-        if(response.status === 200 ){
-            return  200
-        }else{
-           console.log(response.status); 
-                return  400
-            }      
-        }).catch(err =>{
-            console.log(`Erro ao realizar requisição ${err}`);
-        });
-        this.dataProcessing(response);
-    return response
+            const data = await response.json()
+                   
+               return data
 
-    } 
+          } catch (error) {
 
-    static async dataProcessing (response){ // tratando os dados de login
+            console.error(error)
 
-        console.log(response);
+        }
+    
 
+    }
+
+
+ 
+
+    static async dataProcessing (){ // tratando os dados de login
+
+        console.log();
 
 
 

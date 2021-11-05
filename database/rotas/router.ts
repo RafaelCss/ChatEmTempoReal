@@ -15,18 +15,29 @@ const user = await prisma.cadastro.create({
         updatedAt: new Date(),
     }
 }).then(user => {
+        
+       const data = {
+          message : 'Usuário Criado com Sucesso',
+          user    :  user.email,
+          status  : 200
+       }
+    res.send(data)
 
-    res.send(`Usuário Criado com Sucesso : ${user.email}`)
 }).catch(err => {
- 
-  res.status(400).send(`Usuário já existe ou houve um erro`)
-  console.log(err)
+
+      const erro = {
+        message :'Usuário já existe ou houve um erro',
+        status  : 400
+      }
+
+  res.send(erro)
+
+  console.error(err)
 })
 
 
-  })
 
-
+})
 
    router.post('/login', async (req, res) =>{
 
@@ -40,47 +51,37 @@ const user = await prisma.cadastro.create({
            
     }).then(user => {
       if(user.length > 0){
+
       const data = {
        name: user[0].name,
-        email: user[0].email,
+       email: user[0].email,
+       status : 200
        }
 
-      return  res.send({
-        data
-        }).status(200)
+      return  res.send(data)
 
       }else{
-        return res.send(`Usuário não encontrado`).status(400)
+
+        const erro = {
+          message : `Usuário não encontrado, realize seu cadastro`,
+          user : `Este email não exite }`,
+          status : 400  
+        }
+
+        return res.send(erro)
+
       }
     }).catch(err => {
+
       console.log(err)
+      
     })
     
     
-      })
+})
      
-   
-
-/* router.post('/login', (req, res) => {
-    const {email,password} = req.body
-    const user = prisma.cadastro.findMany({
-       where: {
-            email : email,
-      }
-}).then(user => {
-  const data = {
-    name: user[0].name,
-    email: user[0].email,
-  }
-console.log(data)
-
-res.send(data)
-
-})
 
 
-})
- */
 
 
 

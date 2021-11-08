@@ -18,4 +18,11 @@
 . Socket.io
 . Prisma
 
+## Estrutura do projeto :
 
+Existem 2 pastas principais :
+. Uma {database} , que contém o servidor do banco de dados ,
+. Uma {server} , que contém o servidor web , ** start também da pasta public **
+
+.> cd database > yarn dev
+.> cd server > yarn dev

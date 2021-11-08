@@ -1,4 +1,5 @@
 import Orchestrator from './orchestrator.js'
+import InputsKey from './controller.js';
 class Login  { // faz o login
 
      constructor (btnLogar, formLogar){
@@ -37,13 +38,13 @@ class Login  { // faz o login
          email: email_login,
          password: senha_login
    }
-   
-   const response =  Orchestrator.logarUser(login)
+  
+   const response =   Orchestrator.logarUser(login)
 
     response.then(res =>{
-
+   
         if(res.status === 200){
-            window.location.href = './chat.html'
+        window.location.href =   `http://localhost:3000/chat/${res.user}`
         }else {
 
             alert(res.message)

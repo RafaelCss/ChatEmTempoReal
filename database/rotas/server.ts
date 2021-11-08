@@ -5,16 +5,16 @@ import router from "../rotas/router"
 const app = express()
 
 interface  corsOptions  {
-    origem : string,
+    origin : string,
     options : number,
 }
 
 const  corsOptions  = { 
-    origem : 'http://localhost:3000' , 
-    optionsSuccessStatus : 200 //  alguns navegadores legados (IE11, várias SmartTVs) bloqueados em 204  
+    origin : 'http://localhost:3000' , 
+    options : 200 
   } 
    
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 app.use(router)    //rota  para o servidor 
 

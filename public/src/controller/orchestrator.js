@@ -1,5 +1,8 @@
-        const urlCadastro = 'http://localhost:3333/cadastro';
-        const urlLogin = 'http://localhost:3333/login';
+import InputsKey from "./controller.js";
+
+    const urlCadastro = 'http://localhost:3333/cadastro';
+    const urlLogin = 'http://localhost:3333/login';
+    const urlChat = 'http://localhost:3333/chat';
 class Orchestrator {
 
     
@@ -42,9 +45,8 @@ static async cadatroUser(user){
                 body:JSON.stringify(login)
                        })
 
-            const data = await response.json()
-                   
-               return data
+            const data = await response.json()        
+            return data
 
           } catch (error) {
 
@@ -58,14 +60,28 @@ static async cadatroUser(user){
 
  
 
-    static async dataProcessing (){ // tratando os dados de login
+ static async dataProcessing (data){ // tratando os dados de login
+    const url = data
+    try {
+        const response = await fetch(`${urlChat}/${url}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+         
+        })
 
-        console.log();
+        const data = await response.json()        
+        return data
 
+      } catch (error) {
 
-
+        console.error(error)
 
     }
 
-}    
+} 
+
+}
 export default Orchestrator

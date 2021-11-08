@@ -35,9 +35,11 @@ async edit(data){ // edita o cadastro
         const {email_cad, nome_cad, senha_cad} = data
 
         const user = {
+
             email: email_cad,
             name: nome_cad,
             password: senha_cad
+            
         }
 
     const response  =  Orchestrator.cadatroUser(user)
@@ -55,7 +57,7 @@ async edit(data){ // edita o cadastro
         }).catch(err=>{
 
             console.error(err)
-            
+
         })
     }
 

@@ -14,7 +14,7 @@ model Cadastro {
   name      String   @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  message     Message[]
+  message   Message[]
  
   @@unique(email)
 }
@@ -22,12 +22,12 @@ model Cadastro {
 
 model Message  {
 
-  id          Int       @id @default(autoincrement())
-  email       String    @db.VarChar(255) 
-  messageSend String    @db.LongText()
-  img         String    @db.MediumText()
-  author      Cadastro? @relation(fields:[authorId], references:[id])     
-  authorId    Int?
+  id          Int        @id @default(autoincrement())
+  email       String     @db.VarChar(255) 
+  messageSend String?    @db.LongText()
+  img         String?    @db.MediumText()
+  createdAt   DateTime   @default(now())
+  author      Cadastro[]  
  
 }
 

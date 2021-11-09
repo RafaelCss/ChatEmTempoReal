@@ -3,6 +3,7 @@ import InputsKey from "./controller.js";
     const urlCadastro = 'http://localhost:3333/cadastro';
     const urlLogin = 'http://localhost:3333/login';
     const urlChat = 'http://localhost:3333/chat';
+    const messageUrl = 'http://localhost:3333/message'
 class Orchestrator {
 
     
@@ -82,6 +83,51 @@ static async cadatroUser(user){
     }
 
 } 
+
+
+static async salveMessage (message){ // Salvando as messagens no banco de dados
+    try {
+        const response = await fetch(`${urlChat}`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        body : JSON.stringify(message)
+        })
+
+        const data = await response.json()        
+        return data
+
+      } catch (error) {
+
+        console.error(error)
+
+    }
+
+}
+
+static async bringMessage (emaildata){ // trazer as messagens
+ const {email} = emaildata
+    try {
+        const response = await fetch(`${messageUrl}/${email}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+
+        const data = await response.json()        
+        return data
+
+      } catch (error) {
+
+        console.error(error)
+
+    }
+
+}
 
 }
 export default Orchestrator

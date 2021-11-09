@@ -1,5 +1,7 @@
 import { response, Router} from "express";
 import { PrismaClient } from '@prisma/client'
+import { isDisturbed } from "node-fetch/node_modules/form-data";
+import { create } from "domain";
 
 
 const router = Router()
@@ -10,10 +12,13 @@ name : String
 email : String
 password : String
 updateAt : Date
+messageSend : String
+img : String
 }
-router.post('/cadastro', async (req, res) =>{
+router.post('/cadastro', async (req, res) =>{ //cadastrar usuario
 
-const {name, email, password} = req.body
+const {name, email, password} = JSON.parse( req.body)
+
 const user = await prisma.cadastro.create({
     data: {
         name,
@@ -50,7 +55,7 @@ const user = await prisma.cadastro.create({
 
 })
 
-   router.post('/login', async (req, res) =>{
+   router.post('/login', async (req, res) =>{ // logar usuario
 
     const {email,password} = req.body
 
@@ -92,11 +97,9 @@ const user = await prisma.cadastro.create({
     
 })
      
-router.get('/chat/:user', async (req,res)=>{
+router.get('/chat/:user', async (req,res)=>{ //trazer informações do usuario
 
   const {user} = req.params
-
-  console.log(JSON.stringify( user))
 
   const userDados =  prisma.cadastro.findMany({
     where: {
@@ -118,7 +121,43 @@ router.get('/chat/:user', async (req,res)=>{
 
 })
 
+router.post('/chat', async (req, res) =>{ // logar usuario
+    
+  const {messageSend, img , email} = req.body
 
+  await prisma.message.create({
+    //criar uma com base na tabela vai ser criado um novo registro
+    data: {
+      messageSend,
+      img,
+      email,
+    }
+   
+  }).then(resposta =>{
+
+    res.send(resposta)
+  }).catch(err =>{
+
+    console.error(err)
+  })
+  
+})
+
+
+router.get('/message/:email', async (req, res) =>{ // logar usuario
+    
+  const {email} = req.params
+  const user = await prisma.message.findMany({
+    where: {
+         email,  
+        }       
+         
+  }).then(resposta =>{
+
+    res.send(resposta)
+  })
+  
+})
 
 
 

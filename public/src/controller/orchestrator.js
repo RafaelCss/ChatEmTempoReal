@@ -1,4 +1,3 @@
-import InputsKey from "./controller.js";
 
     const urlCadastro = 'http://localhost:3333/cadastro';
     const urlLogin = 'http://localhost:3333/login';

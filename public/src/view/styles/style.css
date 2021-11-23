@@ -693,27 +693,19 @@ height:200px;
 
 li{
 
-  margin: 0;
-  padding: 0;
-  border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-  display: list-item;
-  text-align: right;
+  display: block;
+  text-align: center;
   list-style: none;
 
 
 }
 
-#message{
-background-color: bisque;
-width: fit-content;
-padding-bottom: 5px;
-padding-left: 1px;
-vertical-align: baseline;
-margin-left: 500px;
-margin-right: 1px;
+#messages{
+  display: block;
+  
+  float: right;
 }
 
 li .other{
@@ -723,7 +715,7 @@ li .other{
 
 }
 
-img {
+#profile-img {
   border-style: none;
   margin: 0;
   padding: 0;
@@ -732,7 +724,20 @@ img {
   font: inherit;
   vertical-align: baseline;
   display: list-item;
-  text-align: left;
-  list-style: none;
 
+
+}
+
+div #msguser {
+  display: block;
+  background-color: #2ecc71;
+  padding: 5px;
+  margin: 5px;
+  width: auto;
+  border: solid 1px;
+}
+
+div #msguser:hover {
+  background-color: #91e5b4fd;
+  border: solid 2px;
 }

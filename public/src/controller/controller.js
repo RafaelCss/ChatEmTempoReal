@@ -1,4 +1,4 @@
-import Login from "./login.js";
+
 import Format from "../util/format.js";
 import Orchestrator from "./orchestrator.js";
 class InputsKey {
@@ -31,7 +31,7 @@ loadElements(){ // Pegando todos os elementos pelo id da chat...
     const infoUser = await Orchestrator.dataProcessing(user)
     
     const {email, name} = infoUser
-
+    this.contactProfile(name)
     this.inputEventMsg(email, name)
     this.retrieveMessage(email) // traz as messagens do banco de dados 
   }
@@ -73,7 +73,7 @@ loadElements(){ // Pegando todos os elementos pelo id da chat...
       }
       
       
- async   inputEventMsg(email, name){  // evento de enviar mensagem
+ async inputEventMsg(email, name){  // evento de enviar mensagem
         const socket = io()
         
         this.dataClass.submit.on('click keypress',  e => {
@@ -91,9 +91,8 @@ loadElements(){ // Pegando todos os elementos pelo id da chat...
             id: socket.id
           }   
            
-      this.eventSalveMessage(email,dataUser.message)
+           this.eventSalveMessage(email,dataUser.message)
      
-          
           if(input.value){
             socket.emit('chat message', dataUser)
             input.value = '';
@@ -102,7 +101,7 @@ loadElements(){ // Pegando todos os elementos pelo id da chat...
           const messages = this.dataClass.messages
           
           socket.on('chat message',  (dataUser) => {
-            messages.innerHTML +=`
+                     messages.innerHTML +=`
                       <div id='msguser'> 
                       <div class='date'>  ${dataUser.data} </div>                    
                       <div class='msg-photo'> <img  src=${dataUser.photo.src} alt='foto'></div>
@@ -161,10 +160,7 @@ eventPhotoProfile(){ // evento de carregar  foto de perfil
         email : email
       }
     await Orchestrator.bringMessage(retMessage).then(response =>{
-
-      
-        this.messageDistributor(response)
-
+     this.messageDistributor(response)
     }).catch(err =>{
 
       console.error(err)
@@ -173,13 +169,11 @@ eventPhotoProfile(){ // evento de carregar  foto de perfil
   }
 
 
-  async messageDistributor(messages){
-    const messagesDiv = this.dataClass.messages
-    messages.forEach(element =>{
-      console.log(element.messageSend)
-      console.log(element.createdAt)
-      console.log(element.img)
+   messageDistributor(messages){
 
+    const messagesDiv = this.dataClass.messages;
+
+   [...messages].forEach(element =>{
     messagesDiv.innerHTML +=`
     <div id='msguser'> 
     <div class='date'>  ${element.createdAt} </div>                    
@@ -189,11 +183,14 @@ eventPhotoProfile(){ // evento de carregar  foto de perfil
 
     })
 
-
-
   }
 
+  contactProfile(name){
+   const nameProfile =  this.dataClass.contactProfile
+   console.log(nameProfile)
+    //nameProfile.document.querySelector('[p]').innerHTML =name
 
+  }
     
     elementsProtoType(){ //Elementos para ajudar nas criações dos eventos ...
         Element.prototype.hide = function(){  // hide esconde

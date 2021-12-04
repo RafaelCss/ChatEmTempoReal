@@ -1,11 +1,12 @@
-
+    //passar a responsabilidade do servidor entregar caminho
     const urlCadastro = 'http://localhost:3333/cadastro';
     const urlLogin = 'http://localhost:3333/login';
     const urlChat = 'http://localhost:3333/chat';
     const messageUrl = 'http://localhost:3333/message'
+
+    //*******
 class Orchestrator {
 
-    
 // static async cadastrarUser (user){ //user = {nome, email, senha}
 static async cadatroUser(user){
         
@@ -53,12 +54,8 @@ static async cadatroUser(user){
             console.error(error)
 
         }
-    
 
     }
-
-
- 
 
  static async dataProcessing (data){ // tratando os dados de login
     const url = data

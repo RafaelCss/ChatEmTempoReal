@@ -741,3 +741,15 @@ div #msguser:hover {
   background-color: #91e5b4fd;
   border: solid 2px;
 }
+
+div .settings-add
+{
+  display: block;
+  padding: 10px;
+  justify-content: space-around;
+  width: 300px;
+  height: 300px;
+  align-items: center;
+  background-color: #496886;
+  margin: 5px;
+}

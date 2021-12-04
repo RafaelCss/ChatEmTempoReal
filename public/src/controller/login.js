@@ -7,12 +7,12 @@ class Login  { // faz o login
 
      //pega os dados do formulario
     dataLogin(btnLogar,formLogar) { // pega todas as informações do formlario de cadastro       
-        this.btn = document.querySelector(btnLogar)
-        this.formLogar = document.querySelector(formLogar)
+        const btn = document.querySelector(btnLogar)
+        const formLogar = document.querySelector(formLogar)
         const data={};
-        this.btn.addEventListener('click', e =>{
+        btn.addEventListener('click', e =>{
             e.preventDefault();
-        [...this.formLogar].forEach(form=>{
+        [...formLogar].forEach(form=>{
             data[form.name] = form.value
         })
         this.startLogin(data)

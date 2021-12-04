@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client'
 const router = Router()
 const prisma = new PrismaClient()   // Inicialização do cliente do prisma
 
-type data = {
+type data = {  // em evolução
 name : String
 email : String
 password : String
@@ -36,7 +36,7 @@ const user = await prisma.cadastro.create({
 
 }).catch(err => {
 
-  const {meta} = err
+  const {meta} = err // meta parametro prisma
 
       const erro = {
         message : meta.target,
@@ -48,9 +48,7 @@ const user = await prisma.cadastro.create({
       console.error(`===> Email já cadastrado na base erro code : ${meta.target}`)
       }
   
-})
-
-
+   })
 
 })
 
@@ -66,21 +64,19 @@ const user = await prisma.cadastro.create({
            
     }).then(user => {
       if(user.length > 0){
-
       const data = {
        name: user[0].name,
        email: user[0].email,
        user: user[0].user,
        status : 200
        }
-
       return  res.send(data)
 
       }else{
 
         const erro = {
           message : `Usuário não encontrado, realize seu cadastro`,
-          user : `Este email não exite }`,
+          user : `Este email não exite `,
           status : 400  
         }
 

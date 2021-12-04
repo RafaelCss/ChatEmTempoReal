@@ -176,8 +176,8 @@ eventPhotoProfile(){ // evento de carregar  foto de perfil
    [...messages].forEach(element =>{
     messagesDiv.innerHTML +=`
     <div id='msguser'> 
-    <div class='date'>  ${element.createdAt} </div>                    
-    <div id ='msgss'> </strong>${element.messageSend} </div>
+    <p class='date'>  ${element.createdAt} </p>                    
+    <p id ='msgss'> </strong>${element.messageSend} </p>
     </div> 
     `
 

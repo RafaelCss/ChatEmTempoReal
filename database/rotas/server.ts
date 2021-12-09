@@ -10,11 +10,11 @@ interface  corsOptions  {
 }
 
 const  corsOptions  = { 
-    origin : 'http://localhost:3000' , 
-    options : 200 
+ origin : 'http://localhost:3000' , 
+   options : 200 
   } 
    
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(router)    //rota  para o servidor 
 

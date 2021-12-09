@@ -14,6 +14,15 @@ updateAt : Date
 messageSend : String
 img : String
 }
+
+ router.get('/cadastro', (req,res) => {
+   const resposta = {
+     name :"Rafael",
+     idade: 30,
+     cidade:"juiz de fora"
+   }
+  res.send(JSON.stringify(resposta))
+}) 
 router.post('/cadastro', async (req, res) =>{ //cadastrar usuario
 
 const {name, email, password} = JSON.parse( req.body)

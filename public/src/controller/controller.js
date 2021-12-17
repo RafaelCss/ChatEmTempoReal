@@ -11,7 +11,8 @@ class InputsKey {
     this.messageDistributor();
   }
 
-  loadElements() { // Pegando todos os elementos pelo id da chat...
+  loadElements() {
+    // Pegando todos os elementos pelo id da chat...
     this.dataClass = {};
     document.querySelectorAll("[id]").forEach((element) => {
       this.dataClass[Format.getCamelCase(element.id)] = element;
@@ -59,7 +60,8 @@ class InputsKey {
     });
   }
 
-  async inputEventMsg(email, name) { // evento de enviar mensagem
+  async inputEventMsg(email, name) {
+    // evento de enviar mensagem
     const socket = io();
     this.dataClass.submit.on("click keypress", (e) => {
       e.preventDefault();

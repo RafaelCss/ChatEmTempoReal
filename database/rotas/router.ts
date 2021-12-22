@@ -1,5 +1,6 @@
 import { Router} from "express";
 import { PrismaClient } from '@prisma/client'
+import path from "path/posix";
 
 
 
@@ -16,13 +17,13 @@ img : String
 }
 
  router.get('/cadastro', (req,res) => {
-   const resposta = {
-     name :"Rafael",
-     idade: 30,
-     cidade:"juiz de fora"
-   }
-  res.send(JSON.stringify(resposta))
+
+   res.sendFile( path+(__dirname+'/database/rotas/index.html'))
+
 }) 
+
+
+
 router.post('/cadastro', async (req, res) =>{ //cadastrar usuario
 
 const {name, email, password} = JSON.parse( req.body)
@@ -62,7 +63,7 @@ const user = await prisma.cadastro.create({
 })
 
    router.post('/login', async (req, res) =>{ // logar usuario
-
+    console.log(req.body)
     const {email,password} = req.body
 
     const user = await prisma.cadastro.findMany({

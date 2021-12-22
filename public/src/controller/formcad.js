@@ -25,7 +25,7 @@ class FormCad {
 
   async edit(data) {
     // edita o cadastro
-
+    console.log(data);
     const { email_cad, nome_cad, senha_cad } = data;
 
     const user = {
@@ -38,10 +38,10 @@ class FormCad {
 
     response
       .then((res) => {
-        if (res.status === 200) {
+        if (res.status == 200) {
           alert("Cadastro realizado com sucesso");
         }
-        if (res.status === 400) {
+        if (res.status == 400) {
           alert("Email já cadastrado");
         }
       })

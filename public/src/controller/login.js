@@ -7,14 +7,15 @@ class Login {
   }
 
   //pega os dados do formulario
-  dataLogin(btnLogar, formLogar) {
+  async dataLogin(btnLogar, formLogar) {
     // pega todas as informações do formlario de cadastro
+    const form = document.querySelector(formLogar);
+    console.log(formLogar)
     const btn = document.querySelector(btnLogar);
-    const formLogar = document.querySelector(formLogar);
     const data = {};
-    btn.addEventListener("click", (e) => {
+   btn.addEventListener("click", (e) => {
       e.preventDefault();
-      [...formLogar].forEach((form) => {
+      [...form].forEach((form) => {
         data[form.name] = form.value;
       });
       this.startLogin(data);
@@ -23,14 +24,15 @@ class Login {
 
   // inicia o login
   async startLogin(data) {
+    console.log(data);
     const { email_login, senha_login } = data;
     const login = {
       email: email_login,
       password: senha_login,
     };
-    const response = Orchestrator.logarUser(login);
-    response
-      .then((res) => {
+    const resposta =  Orchestrator.logarUser(login);
+    console.log(resposta);
+    resposta.then((res) => {
         if (res.status === 200) {
           window.location.href = `http://localhost:3000/chat/${res.user}`;
         } else {

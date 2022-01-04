@@ -1,6 +1,9 @@
 import cors from "cors"
 import express  from "express"
 import router from "../rotas/router"
+import path from 'path';
+
+
 
 const app = express()
 
@@ -18,8 +21,9 @@ app.use(cors())
 app.use(express.json())
 app.use(router)    //rota  para o servidor 
 
-
-
+app.set('view engine', 'html') 
+app.use(express.static('.'))      
+app.use(express.static('rotas'))
 
 
 

@@ -153,7 +153,7 @@ class InputsKey {
     [...messages].forEach((element) => {
       messagesDiv.innerHTML += `
     <div id='msguser'> 
-    <p class='date'>  ${element.createdAt} </p>                    
+    <p class='date'>  ${Format.transformToDate(element.createdAt)} </p>                    
     <p id ='msgss'> </strong>${element.messageSend} </p>
     </div> 
     `;

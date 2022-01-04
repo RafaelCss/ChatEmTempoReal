@@ -17,6 +17,7 @@ const  corsOptions  = {
  options : 200 
   } 
    
+  
 app.use(cors())
 app.use(express.json())
 app.use(router)    //rota  para o servidor 

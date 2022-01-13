@@ -3,14 +3,22 @@ import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
+
+interface Models {  // em evolução
+  name : string;
+  email : string;
+  password : string;
+  updateAt : Date;
+  messageSend ?: string;
+  img ?: string
+  }
+  
 class Treatment {
-  static async addBank(name: string, email: string, password: string) {
+   async addBank(body : Models) {
     const user = await prisma.cadastro
       .create({
         data: {
-          name,
-          email,
-          password,
+          body.,
           updatedAt: new Date(),
         },
       })

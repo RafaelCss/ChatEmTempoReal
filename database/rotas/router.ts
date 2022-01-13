@@ -1,27 +1,21 @@
 import { Router} from "express";
+import Treatment from "../treatment/Treatment";
 import { PrismaClient } from '@prisma/client'
 import path from 'path';
+import { type } from "os";
 
 
 
 const router = Router()
 const prisma = new PrismaClient()   // Inicialização do cliente do prisma
 
-type data = {  // em evolução
-name : String
-email : String
-password : String
-updateAt : Date
-messageSend : String
-img : String
-}
-
  router.get('/cadastro', (req,res) => {
    res.render( 'index.html')
 }) 
 
-router.post('/cadastro', async (req, res) =>{ //cadastrar usuario
-const {name, email, password} = JSON.parse( req.body)
+router.post('/cadastro', async (req , res) =>{ //cadastrar usuario
+
+const {name , email, password} = JSON.parse( req.body)
 const user = await prisma.cadastro.create({
     data: {
         name,

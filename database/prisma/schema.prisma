@@ -2,7 +2,7 @@ generator client {
   provider = "prisma-client-js"
 }
 datasource db {
-  provider = "mysql"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
@@ -24,8 +24,8 @@ model Message  {
 
   id          Int        @id @default(autoincrement())
   email       String     @db.VarChar(255) 
-  messageSend String?    @db.LongText()
-  img         String?    @db.MediumText()
+  messageSend String?    @db.Citext 
+  img         String?    @db.Citext
   createdAt   DateTime   @default(now())
   author      Cadastro[]  
  

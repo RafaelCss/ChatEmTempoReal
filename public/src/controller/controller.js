@@ -150,7 +150,7 @@ class InputsKey {
   messageDistributor(messages) {
     const messagesDiv = this.dataClass.messages;
 
-    [...messages].forEach((element) => {
+    [...messages].map((element) => {
       messagesDiv.innerHTML += `
     <div id='msguser'> 
     <p class='date'>  ${Format.transformToDate(element.createdAt)} </p>                    

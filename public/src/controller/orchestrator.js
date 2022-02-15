@@ -1,4 +1,3 @@
-
 //passar a responsabilidade do servidor entregar caminho
 const urlCadastro = "http://localhost:3333/cadastro";
 const urlLogin = "http://localhost:3333/login";
@@ -9,7 +8,6 @@ const messageUrl = "http://localhost:3333/message";
 class Orchestrator {
   // static async cadastrarUser (user){ //user = {nome, email, senha}
   static async cadatroUser(user) {
-    
     const resposta = await fetch(urlCadastro, {
       method: "POST",
       headers: {
@@ -18,8 +16,8 @@ class Orchestrator {
       body: JSON.stringify(user),
     })
       .then((res) => {
-        const data = res.json();
-
+        const data =  res.json();
+        console.log(data);
         return data;
       })
       .catch((err) => {
@@ -107,7 +105,5 @@ class Orchestrator {
       console.error(error);
     }
   } // fim da função
-
-
 }
 export default Orchestrator;

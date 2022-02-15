@@ -16,7 +16,7 @@ class Orchestrator {
       body: JSON.stringify(user),
     })
       .then((res) => {
-        const data =  res.json();
+        const data = res.json();
         console.log(data);
         return data;
       })
@@ -86,7 +86,25 @@ class Orchestrator {
     } catch (error) {
       console.error(error);
     }
-  }
+  } // fim da função
+
+  static async deleteMessage(message) {
+    // deletando as messagens no banco de dados
+    try {
+      const response = await fetch(`${urlChat}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  } // fim da função
 
   static async bringMessage(emaildata) {
     // trazer as messagens

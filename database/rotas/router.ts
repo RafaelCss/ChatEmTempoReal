@@ -1,8 +1,6 @@
-import { Router} from "express";
-import Treatment from "../treatment/Treatment";
+import { Router} from "express";;
 import { PrismaClient } from '@prisma/client'
-import path from 'path';
-import { type } from "os";
+
 
 
 

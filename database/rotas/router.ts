@@ -15,7 +15,7 @@ const prisma = new PrismaClient()   // Inicialização do cliente do prisma
 
 router.post('/cadastro', async (req , res) =>{ //cadastrar usuario
 
-const {name , email, password} = JSON.parse( req.body)
+const {name , email, password} = await req.body
 const user = await prisma.cadastro.create({
     data: {
         name,
@@ -42,6 +42,8 @@ const user = await prisma.cadastro.create({
       }
    })
 })
+
+
    router.post('/login', async (req, res) =>{ // logar usuario
     console.log(req.body)
     const {email,password} = req.body

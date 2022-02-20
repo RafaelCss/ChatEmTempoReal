@@ -25,6 +25,7 @@ class FormCad {
 
   async edit(data) {
     // edita o cadastro
+    // editar
     console.log(data);
     const { email_cad, nome_cad, senha_cad } = data;
 

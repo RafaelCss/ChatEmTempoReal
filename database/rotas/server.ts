@@ -12,10 +12,10 @@ interface  corsOptions  {
     options : number,
 }
 
-const  corsOptions  = { 
- origin : 'http://localhost:3000' , 
- options : 200 
-  } 
+const corsOptions: corsOptions = {
+  origin: "http://localhost:3000",
+  options: 200,
+}; 
    
   
 app.use(cors())

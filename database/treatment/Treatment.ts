@@ -14,13 +14,13 @@ interface Models {  // em evolução
   }
   
 class Treatment {
- static  async addBank(name :string , email : string , password : string) {
+  static async addBank({ name, email, password }: Models) {
     const user = await prisma.cadastro
       .create({
         data: {
           name,
           email,
-          password,  
+          password,
           updatedAt: new Date(),
         },
       })

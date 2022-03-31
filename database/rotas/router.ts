@@ -1,15 +1,16 @@
 import { Router} from "express";;
 import { PrismaClient } from '@prisma/client'
 
+import path from "path";
 
+const dirname = path.resolve();
 
+const router = Router();
+const prisma = new PrismaClient(); // Inicialização do cliente do prisma
 
-const router = Router()
-const prisma = new PrismaClient()   // Inicialização do cliente do prisma
-
- router.get('/cadastro', (req,res) => {
-   res.render( 'index.html')
-}) 
+router.get("/", (req, res) => {
+  res.render(path.join(dirname + "/public/src/views/index.ejs"));
+});
 
 router.post('/cadastro', async (req , res) =>{ //cadastrar usuario
 

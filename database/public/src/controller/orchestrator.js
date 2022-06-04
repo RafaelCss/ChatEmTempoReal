@@ -18,15 +18,12 @@ class Orchestrator {
     })
       .then((res) => {
         const data = res.json();
-        console.log(data);
         return data;
       })
       .catch((err) => {
         const erro = err.json();
-
         return erro;
       });
-
     return resposta;
   }
 
@@ -90,7 +87,7 @@ class Orchestrator {
   } // fim da função
 
   static async deleteMessage(message) {
-    // deletando as messagens no banco de dados
+    // delatando as messagens no banco de dados
     try {
       const response = await fetch(`${urlChat}`, {
         method: "DELETE",
@@ -107,9 +104,9 @@ class Orchestrator {
     }
   } // fim da função
 
-  static async bringMessage(emaildata) {
+  static async bringMessage(emailData) {
     // trazer as messagens
-    const { email } = emaildata;
+    const { email } = emailData;
     try {
       const response = await fetch(`${messageUrl}/${email}`, {
         method: "GET",

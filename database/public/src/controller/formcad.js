@@ -30,7 +30,7 @@ class FormCad {
       name: nome_cad,
       password: senha_cad,
     }
-    const response = await Orchestrator.cadatroUser(user)
+    const response =  Orchestrator.cadastroUser(user)
     console.log(response)
     response
       .then((res) => {

@@ -4,7 +4,7 @@ class InputsKey {
   constructor() {
     this.elementsProtoType();
     this.loadElements();
-    this.addcontact();
+    this.addContact();
     this.eventPhotoProfile();
     this.settings();
     this.dataUserProfile();
@@ -28,34 +28,34 @@ class InputsKey {
     this.retrieveMessage(email); // traz as messagens do banco de dados
   }
 
-  addcontact() {
+  addContact() {
     //eventos de div configuração e add contatos
-    this.dataClass.addcontact.on("click", (e) => {
+    this.dataClass.addContact.on("click", (e) => {
       // Click Div addcontatos..
       this.dataClass.contacts.toggle();
       //criar uma div  que contem espaços para adicionar contatos
-      this.dataClass.contacts.innerHTML = `     
-      <div class="contact-add">   
+      this.dataClass.contacts.innerHTML = `
+      <div class="contact-add">
       <input type="text" placeholder="Nome" id="contact-name">
-      <input type="text" placeholder="Email" id="contact-email">  
-          <button id="contact-add">Adicionar</button>   
+      <input type="text" placeholder="Email" id="contact-email">
+          <button id="contact-add">Adicionar</button>
           </div>  `;
     });
   }
 
   settings() {
-    // alterar as  confirações.
+    // alterar as  configurações.
     this.dataClass.settings.on("click", (fn) => {
-      // Click Div div confirações..
+      // Click Div div configurações..
       this.dataClass.contacts.toggle();
-      this.dataClass.contacts.innerHTML = `         
-          <div class="settings-add">   
+      this.dataClass.contacts.innerHTML = `
+          <div class="settings-add">
           <input type="text" placeholder="Nome" id="settings-name">
           <input type="text" placeholder="Email" id="settings-email">
-          <input type="text" placeholder="Senha" id="settings-password"> 
+          <input type="text" placeholder="Senha" id="settings-password">
           <label for="settings-photo">Escolher foto do Perfil: </label>
-          <input type="file" name="photo-settings" id="photo-settings" style = "display :">     
-          <button type="submit" id="settings-add">Salvar</button>   
+          <input type="file" name="photo-settings" id="photo-settings" style = "display :">
+          <button type="submit" id="settings-add">Salvar</button>
           </div>  `;
     });
   }
@@ -82,11 +82,11 @@ class InputsKey {
       const messages = this.dataClass.messages;
       socket.on("chat message", (dataUser) => {
         messages.innerHTML += `
-                      <div id='msguser'> 
-                      <div class='date'>  ${dataUser.data} </div>                    
+                      <div id='msguser'>
+                      <div class='date'>  ${dataUser.data} </div>
                       <div class='msg-photo'> <img  src=${dataUser.photo.src} alt='foto'></div>
                       <div id ='msgss'><strong>${dataUser.name}: </strong>${dataUser.message} -${dataUser.time}</div>
-                      </div>       
+                      </div>
                       `;
         window.scrollTo(0, document.body.scrollHeight);
       });
@@ -152,10 +152,10 @@ class InputsKey {
 
     [...messages].map((element) => {
       messagesDiv.innerHTML += `
-    <div id='msguser'> 
-    <p class='date'>  ${Format.transformToDate(element.createdAt)} </p>                    
+    <div id='msguser'>
+    <p class='date'>  ${Format.transformToDate(element.createdAt)} </p>
     <p id ='msgss'> </strong>${element.messageSend} </p>
-    </div> 
+    </div>
     `;
     });
   }
@@ -174,12 +174,12 @@ class InputsKey {
       return this;
     };
     Element.prototype.show = function () {
-      // showw aparece
+      // show aparece
       this.style.display = "block";
       return this;
     };
     Element.prototype.toggle = function () {
-      // toggle se apaecer esconde , se escodeu aparece
+      // toggle se aparecer esconde , se escondeu aparece
       this.style.display = this.style.display === "none" ? "block" : "none";
       return this;
     };
@@ -192,7 +192,7 @@ class InputsKey {
     };
 
     Element.prototype.css = function (style) {
-      // posso criar um objeto com definiçoes css
+      // posso criar um objeto com definições css
       for (let name in styles) {
         this.style[name] = styles[name];
       }
@@ -200,13 +200,13 @@ class InputsKey {
     };
 
     Element.prototype.addClass = function (name) {
-      // adiciono uma classe com esse métodp
+      // adiciono uma classe com esse método
       this.classList.add(name);
       return this;
     };
 
     Element.prototype.removeClass = function (name) {
-      // removo uma classe com esse métodp
+      // removo uma classe com esse método
       this.classList.remove(name);
       return this;
     };

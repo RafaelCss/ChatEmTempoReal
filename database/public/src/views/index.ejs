@@ -4,47 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="src/views/styles/login.css">
     <title>Document</title>
 </head>
 <body>
     <div class="container" >
         <a class="links" id="paracadastro"></a>
         <a class="links" id="paralogin"></a>
-        
-        <div class="content">      
+
+        <div class="content">
           <!--FORMULÁRIO DE LOGIN-->
           <div id="login">
-            <form  id="formLogin"> 
-              <h1>Login</h1> 
-              <p> 
+            <form  id="formLogin">
+              <h1>Login</h1>
+              <p>
                 <label for="email_login">Seu e-mail</label>
                 <input id="email_login" name="email_login" required="required" type="text" placeholder="seuemail@seuemail.com"/>
               </p>
-              
-              <p> 
+
+              <p>
                 <label for="senha_login">Sua senha</label>
-                <input id="senha_login" name="senha_login" required="required" type="password" placeholder="1234" /> 
+                <input id="senha_login" name="senha_login" required="required" type="password" placeholder="1234" />
               </p>
-              
-              <p> 
-                <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
+
+              <p>
+                <input type="checkbox" name="manterlogado" id="manterlogado" value="" />
                 <label for="manterlogado">Manter-me logado</label>
               </p>
-              
-              <p> 
-                <input type="submit" value="Logar" id="logar" /> 
+
+              <p>
+                <input type="submit" value="Logar" id="logar" />
               </p>
-              
-              
+
+
             </form>
           </div>
-    
-      
+
+
         </div>
-      </div> 
-      <script type="module" src="/public/src/controller/login.js"></script>
-      <script  type="module" src="/public/src/controller/service.js"></script>
-      
+      </div>
+      <script type="module" src="src/controller/login.js"></script>
+      <script  type="module" src="src/controller/service.js"></script>
+
 </body>
 </html>

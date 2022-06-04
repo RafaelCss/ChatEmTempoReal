@@ -19,8 +19,8 @@ router.get("/chat", (req, res) => {
   res.render(path.join(dirname + "/public/src/views/chat.ejs"));
 });
 
-router.post('/cadastro', async (req, res) => { //cadastrar usuario
-
+router.post('/cadastro', async (req, res) => { //cadastrar usuário
+  console.log(req.body);
   const { name, email, password } = await req.body
   const user = await prisma.cadastro.create({
     data: {
@@ -37,7 +37,7 @@ router.post('/cadastro', async (req, res) => { //cadastrar usuario
     }
     res.send(data)
   }).catch((err: { meta: any; }) => {
-    const { meta } = err // meta parametro prisma
+    const { meta } = err // meta parâmetro prisma
     const erro = {
       message: meta.target,
       status: 400
@@ -50,7 +50,7 @@ router.post('/cadastro', async (req, res) => { //cadastrar usuario
 })
 
 
-router.post('/login', async (req, res) => { // logar usuario
+router.post('/login', async (req, res) => { // logar usuário
   console.log(req.body)
   const { email, password } = req.body
   const user = await prisma.cadastro.findMany({
@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => { // logar usuario
     } else {
       const erro = {
         message: `Usuário não encontrado, realize seu cadastro`,
-        user: `Este email não exite `,
+        user: `Este email não existe `,
         status: 400
       }
       return res.send(erro)
@@ -80,7 +80,7 @@ router.post('/login', async (req, res) => { // logar usuario
   })
 })
 
-router.get('/chat/:user', async (req, res) => { //trazer informações do usuario
+router.get('/chat/:user', async (req, res) => { //trazer informações do usuário
   const { user } = req.params
   const userDados = prisma.cadastro.findMany({
     where: {
@@ -97,10 +97,10 @@ router.get('/chat/:user', async (req, res) => { //trazer informações do usuari
   })
 })
 
-router.post('/chat', async (req, res) => { // logar usuario
+router.post('/chat', async (req, res) => { // logar usuário
   const { messageSend, img, email } = req.body
   await prisma.message.create({
-    //criar uma com base na tabela vai ser criado um novo registro
+    //criar uma com base na tabela vai ser criado um novo registo
     data: {
       messageSend,
       img,
@@ -113,7 +113,7 @@ router.post('/chat', async (req, res) => { // logar usuario
   })
 })
 
-router.get('/message/:email', async (req, res) => { // logar usuario
+router.get('/message/:email', async (req, res) => { // logar usuário
   const { email } = req.params
   const user = await prisma.message.findMany({
     where: {

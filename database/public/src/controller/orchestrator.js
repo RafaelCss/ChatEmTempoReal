@@ -7,7 +7,8 @@ const messageUrl = "http://localhost:3333/message";
 //*******
 class Orchestrator {
   // static async cadastrarUser (user){ //user = {nome, email, senha}
-  static async cadatroUser(user) {
+  static async cadastroUser(user) {
+    console.log(user)
     const resposta = await fetch(urlCadastro, {
       method: "POST",
       headers: {

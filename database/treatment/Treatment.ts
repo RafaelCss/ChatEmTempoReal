@@ -1,5 +1,4 @@
 // Tratamento das requisições
-import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
@@ -12,7 +11,7 @@ interface Models {  // em evolução
   messageSend ?: string;
   img ?: string
   }
-  
+
 class Treatment {
   static async addBank({ name, email, password }: Models) {
     const user = await prisma.cadastro
@@ -24,7 +23,7 @@ class Treatment {
           updatedAt: new Date(),
         },
       })
-      .then((user) => {
+      .then((user: { email: any; }) => {
         if (!user === null) {
           const cad = { data: user.email, status: 200 };
           return cad;
@@ -33,7 +32,7 @@ class Treatment {
           return cad;
         }
       })
-      .catch((err) => {
+      .catch((err: any) => {
         return err;
         // res.status(400).send(`Usuário já existe ou houve um erro`)
       });
@@ -47,7 +46,7 @@ class Treatment {
           password: password,
         },
       })
-      .then((user) => {
+      .then((user: string | any[]) => {
         if (user.length > 0) {
           const data = {
             name: user[0].name,
@@ -59,7 +58,7 @@ class Treatment {
           return false;
         }
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err);
       });
   }

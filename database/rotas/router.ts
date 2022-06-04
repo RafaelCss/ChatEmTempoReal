@@ -22,14 +22,14 @@ const user = await prisma.cadastro.create({
         password,
         updatedAt: new Date(),
     }
-}).then(user => {
+}).then((user: { email: any; }) => {
        const data = {
           message : 'Usuário Criado com Sucesso',
           user    :  user.email,
           status  : 200
        }
     res.send(data)
-}).catch(err => {
+}).catch((err: { meta: any; }) => {
   const {meta} = err // meta parametro prisma
       const erro = {
         message : meta.target,
@@ -50,8 +50,8 @@ const user = await prisma.cadastro.create({
       where: {
            email : email,
            password : password,
-      }         
-    }).then(user => {
+      }
+    }).then((user: string | any[]) => {
       if(user.length > 0){
       const data = {
        name: user[0].name,
@@ -64,33 +64,33 @@ const user = await prisma.cadastro.create({
         const erro = {
           message : `Usuário não encontrado, realize seu cadastro`,
           user : `Este email não exite `,
-          status : 400  
+          status : 400
         }
         return res.send(erro)
       }
-    }).catch(err => {
-      console.log(err)   
+    }).catch((err: any) => {
+      console.log(err)
     })
 })
-     
+
 router.get('/chat/:user', async (req,res)=>{ //trazer informações do usuario
   const {user} = req.params
   const userDados =  prisma.cadastro.findMany({
     where: {
           user
-        } 
-    }).then(resposta =>{  
+        }
+    }).then((resposta: { email: any; name : any }[]) =>{
       const data ={
         name : resposta[0].name,
-        email : resposta[0].email  
+        email : resposta[0].email
       }
       res.send(data)
-    }).catch(err =>{
+    }).catch((err: any) =>{
       console.error(err)
     })
 })
 
-router.post('/chat', async (req, res) =>{ // logar usuario   
+router.post('/chat', async (req, res) =>{ // logar usuario
   const {messageSend, img , email} = req.body
   await prisma.message.create({
     //criar uma com base na tabela vai ser criado um novo registro
@@ -99,9 +99,9 @@ router.post('/chat', async (req, res) =>{ // logar usuario
       img,
       email,
     }
-  }).then(resposta =>{
+  }).then((resposta: any) =>{
     res.send(resposta)
-  }).catch(err =>{
+  }).catch((err: any) =>{
     console.error(err)
   })
 })
@@ -110,9 +110,9 @@ router.get('/message/:email', async (req, res) =>{ // logar usuario
   const {email} = req.params
   const user = await prisma.message.findMany({
     where: {
-         email,  
-        }       
-  }).then(resposta =>{
+         email,
+        }
+  }).then((resposta: any) =>{
     res.send(resposta)
   })
 })

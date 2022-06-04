@@ -134,7 +134,7 @@ class InputsKey {
   }
 
   async retrieveMessage(email) {
-    //traz as messagens para o banco de dados
+    //traz as messagens do banco de dados
     const retMessage = {
       email: email,
     };

@@ -12,7 +12,6 @@ class FormCad {
     this.btn.addEventListener('click', (e) => {
       e.preventDefault()
       ;[...this.formCadastro].forEach((form) => {
-        console.log(form)
         data[form.name] = form.value
       })
 

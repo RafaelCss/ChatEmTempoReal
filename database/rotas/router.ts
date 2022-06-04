@@ -15,7 +15,7 @@ router.get("/cadastro", (req, res) => {
   res.render(path.join(dirname + "/public/src/views/cadastro.ejs"));
 });
 
-router.get("/chat", (req, res) => {
+ router.get("/chat/:id", (req, res) => {
   res.render(path.join(dirname + "/public/src/views/chat.ejs"));
 });
 

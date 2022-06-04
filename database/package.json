@@ -9,7 +9,7 @@
     "start": " node dist/rotas/server.js "
   },
   "keywords": [],
-  "author": "",
+  "author": "Rafael Carlos De Souza",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.11.6",

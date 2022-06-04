@@ -21,7 +21,7 @@ const corsOptions: corsOptions = {
 app.use(express.json());
 app.use(router); //rota  para o servidor
 //app.use(express.static( "public/src"));
-app.use(express.static(path.join(dirname, "public")));
+//app.use(express.static(path.join(dirname, "public")));
 app.set("view engine", "ejs");
 
 

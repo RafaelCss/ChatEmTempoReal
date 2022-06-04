@@ -1,5 +1,5 @@
 import cors from "cors"
-import express  from "express"
+import express from "express"
 import router from "../rotas/router"
 import path from 'path';
 
@@ -17,7 +17,7 @@ const corsOptions: corsOptions = {
   options: 200,
 };
 
-app.use(cors());
+//app.use(cors());
 app.use(express.json());
 app.use(router); //rota  para o servidor
 app.use(express.static(path.join(dirname, "public")));

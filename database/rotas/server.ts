@@ -20,12 +20,13 @@ const corsOptions: corsOptions = {
 //app.use(cors());
 app.use(express.json());
 app.use(router); //rota  para o servidor
+//app.use(express.static( "public/src"));
 app.use(express.static(path.join(dirname, "public")));
 app.set("view engine", "ejs");
 
 
 app.listen(process.env.PORT || 3333, () => {
-    console.log("Server is running on port 3333")
+    console.log(`Servidor Rodando na porta ${process.env.PORT || 3333}`);
 })
 
 

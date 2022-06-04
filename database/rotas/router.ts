@@ -11,6 +11,13 @@ const prisma = new PrismaClient(); // Inicialização do cliente do prisma
 router.get("/", (req, res) => {
   res.render(path.join(dirname + "/public/src/views/index.ejs"));
 });
+router.get("/cadastro", (req, res) => {
+  res.render(path.join(dirname + "/public/src/views/cadastro.ejs"));
+});
+
+router.get("/chat", (req, res) => {
+  res.render(path.join(dirname + "/public/src/views/chat.ejs"));
+});
 
 router.post('/cadastro', async (req, res) => { //cadastrar usuario
 

@@ -35,7 +35,7 @@ class Login {
     resposta
       .then((res) => {
         if (res.status === 200) {
-          window.location.href = `http://localhost:3333/chat/${res.user}`
+          localStorage.setItem('user', JSON.stringify(res.data))
         } else {
           alert(res.message)
         }

@@ -15,7 +15,7 @@ router.get("/cadastro", (req, res) => {
   res.render(path.join(dirname + "/public/src/views/cadastro.ejs"));
 });
 
- router.get("/chat", (req, res) => {
+ router.get("/chat/:id", (req, res) => {
   res.render(path.join(dirname + "/public/src/views/chat.ejs"));
 });
 
@@ -91,7 +91,7 @@ router.get('/chat/:user', async (req, res) => { //trazer informações do usuár
       name: resposta[0].name,
       email: resposta[0].email
     }
-    res.render(path.join(dirname + "/public/src/views/chat.ejs"));
+    return res.send(data)
   }).catch((err: any) => {
     console.error(err)
   })

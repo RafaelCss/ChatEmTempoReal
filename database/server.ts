@@ -1,10 +1,8 @@
-import cors from "cors"
+
 import express from "express"
-import router from "../rotas/router"
-import path from 'path';
+import router from "./rotas/router"
 
 
-const dirname = path.resolve();
 const app = express();
 
 interface corsOptions {
@@ -19,7 +17,7 @@ const corsOptions: corsOptions = {
 
 //app.use(cors());
 app.use(express.json());
-app.use(router); //rota  para o servidor
+app.use('/',router); //rota  para o servidor
 app.set("view engine", "ejs");
 app.use(express.static('.'))
 app.use(express.static('public'))

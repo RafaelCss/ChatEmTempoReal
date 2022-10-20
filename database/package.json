@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": " ts-node-dev --respawn --transpile-only rotas/server.ts ",
-    "start": " node dist/rotas/server.js "
+    "dev": " ts-node-dev --respawn --transpile-only server.ts ",
+    "start": " node dist/server.js "
   },
   "keywords": [],
   "author": "Rafael Carlos De Souza",

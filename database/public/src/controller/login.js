@@ -24,18 +24,18 @@ class Login {
 
   // inicia o login
   async startLogin(data) {
-    console.log(data)
     const { email_login, senha_login } = data
     const login = {
       email: email_login,
       password: senha_login,
     }
     const resposta = Orchestrator.logarUser(login)
-    console.log(resposta)
     resposta
       .then((res) => {
+        console.loh(res)
         if (res.status === 200) {
-          localStorage.setItem('user', JSON.stringify(res.data))
+          localStorage.setItem('user', JSON.stringify(res))
+          window.location.href = `http://localhost:3000/chat/${res.user}`
         } else {
           alert(res.message)
         }

@@ -51,7 +51,7 @@ router.post('/cadastro', async (req, res) => { //cadastrar usuário
 
 
 router.post('/login', async (req, res) => { // logar usuário
-  console.log(req.body)
+  console.log('login',req.body)
   const { email, password } = req.body
   const user = await prisma.cadastro.findMany({
     where: {

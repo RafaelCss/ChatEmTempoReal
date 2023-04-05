@@ -7,5 +7,6 @@
     "msguser",
     "respawn",
     "Souza"
-  ]
+  ],
+  "dotenv.enableAutocloaking": false
 }

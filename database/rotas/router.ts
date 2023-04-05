@@ -20,7 +20,6 @@ router.get("/cadastro", (req, res) => {
 });
 
 router.post('/cadastro', async (req, res) => { //cadastrar usuário
-  console.log(req.body);
   const { name, email, password } = await req.body
   const user = await prisma.cadastro.create({
     data: {
